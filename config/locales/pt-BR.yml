@@ -209,7 +209,7 @@ pt-BR:
       <<: *errors
   activerecord:
     models:
-      indicator_category: Categoria Indicator
+      indicator_category: Indicador Categoria
     attributes:
       indicator_category:
         id: Cód.
