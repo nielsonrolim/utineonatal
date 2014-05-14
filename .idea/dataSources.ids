@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails utineonatal: development" uuid="21b1eaed-8450-4703-a2e8-cd2dc2da7614">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails utineonatal: test" uuid="f5918249-b7e7-447a-b455-c210549913bd">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails utineonatal: production" uuid="28cb54c3-bdce-463d-bf44-0ae24feac977">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
