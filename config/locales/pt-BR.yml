@@ -211,10 +211,8 @@ pt-BR:
     models:
       indicator_category: Categoria Indicator
     attributes:
-      sponsor:
+      indicator_category:
+        id: Cód.
         name: Nome
-        address: Endereço
-        phone: Telefone
-        email: E-mail
     errors:
       <<: *errors
