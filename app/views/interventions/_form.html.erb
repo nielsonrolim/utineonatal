@@ -1,0 +1,7 @@
+<%= simple_form_for @intervention, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                interventions_path, :class => 'btn btn-default' %>
+<% end %>

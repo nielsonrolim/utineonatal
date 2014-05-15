@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :interventions
+
+  resources :diagnoses
+
+  resources :indicators
+
   resources :indicator_categories
 
   # The priority is based upon order of creation: first created -> highest priority.

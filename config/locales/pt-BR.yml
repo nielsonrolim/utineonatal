@@ -210,9 +210,24 @@ pt-BR:
   activerecord:
     models:
       indicator_category: Indicador Categoria
+      indicator: Indicador
+      diagnosis: Diagnóstico
+      intervention: Intervenção
     attributes:
       indicator_category:
-        id: Cód.
+        id: Cód
+        name: Nome
+      indicator:
+        id: Cód
+        name: Nome
+        indicator_category_id: Categoria
+        has_obs: Tem observação?
+        obs_description: Descrição da observação
+      diagnosis:
+        id: Cód
+        name: Nome
+      intervention:
+        id: Cód
         name: Nome
     errors:
       <<: *errors

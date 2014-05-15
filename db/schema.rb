@@ -11,12 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514195528) do
+ActiveRecord::Schema.define(version: 20140514224233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "diagnoses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "indicator_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "indicators", force: true do |t|
+    t.string   "name"
+    t.string   "obs_description"
+    t.boolean  "has_obs"
+    t.integer  "indicator_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interventions", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

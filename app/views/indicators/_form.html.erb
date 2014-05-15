@@ -1,0 +1,10 @@
+<%= simple_form_for @indicator, :html => {:class => 'form-horizontal'} do |f| %>
+    <%= f.input :name %>
+    <%= f.association :indicator_category, label: 'Categoria', prompt: "-- Selecione uma categoria --" %>
+    <%= f.input :has_obs %>
+    <%= f.input :obs_description %>
+
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                indicators_path, :class => 'btn btn-default' %>
+<% end %>
