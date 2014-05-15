@@ -16,10 +16,12 @@ class IndicatorsController < ApplicationController
   # GET /indicators/new
   def new
     @indicator = Indicator.new
+    @diagnoses = Diagnosis.order(:name)
   end
 
   # GET /indicators/1/edit
   def edit
+    @diagnoses = Diagnosis.order(:name)
   end
 
   # POST /indicators
@@ -29,6 +31,14 @@ class IndicatorsController < ApplicationController
 
     respond_to do |format|
       if @indicator.save
+        @indicator.diagnoses = []
+        selected_diagnoses = params[:selected_diagnoses]
+        unless selected_diagnoses.nil?
+          selected_diagnoses.each do |id|
+            diagnosis = Diagnosis.find id
+            @indicator.diagnoses << diagnosis
+          end
+        end
         format.html { redirect_to @indicator, notice: 'Indicator was successfully created.' }
         format.json { render :show, status: :created, location: @indicator }
       else
@@ -43,6 +53,14 @@ class IndicatorsController < ApplicationController
   def update
     respond_to do |format|
       if @indicator.update(indicator_params)
+        @indicator.diagnoses = []
+        selected_diagnoses = params[:selected_diagnoses]
+        unless selected_diagnoses.nil?
+          selected_diagnoses.each do |id|
+            diagnosis = Diagnosis.find id
+            @indicator.diagnoses << diagnosis
+          end
+        end
         format.html { redirect_to @indicator, notice: 'Indicator was successfully updated.' }
         format.json { render :show, status: :ok, location: @indicator }
       else
