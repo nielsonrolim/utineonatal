@@ -82,4 +82,5 @@ production:
   <<: *default
   database: utineonatal_production
   username: utineonatal
-  password: <%= ENV['UTINEONATAL_DATABASE_PASSWORD'] %>
+  password: ppk222!
+  #password: <%= ENV['UTINEONATAL_DATABASE_PASSWORD'] %>
