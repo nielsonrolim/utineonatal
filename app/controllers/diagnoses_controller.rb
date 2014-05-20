@@ -15,10 +15,12 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/new
   def new
     @diagnosis = Diagnosis.new
+    @interventions = Intervention.order(:name)
   end
 
   # GET /diagnoses/1/edit
   def edit
+    @interventions = Intervention.order(:name)
   end
 
   # POST /diagnoses
@@ -28,6 +30,14 @@ class DiagnosesController < ApplicationController
 
     respond_to do |format|
       if @diagnosis.save
+        @diagnosis.interventions = []
+        selected_interventions = params[:selected_interventions]
+        unless selected_interventions.nil?
+          selected_interventions.each do |id|
+            interventions = Intervention.find id
+            @diagnosis.interventions << interventions
+          end
+        end
         format.html { redirect_to @diagnosis, notice: 'Diagnosis was successfully created.' }
         format.json { render :show, status: :created, location: @diagnosis }
       else
@@ -42,6 +52,14 @@ class DiagnosesController < ApplicationController
   def update
     respond_to do |format|
       if @diagnosis.update(diagnosis_params)
+        @diagnosis.interventions = []
+        selected_interventions = params[:selected_interventions]
+        unless selected_interventions.nil?
+          selected_interventions.each do |id|
+            interventions = Intervention.find id
+            @diagnosis.interventions << interventions
+          end
+        end
         format.html { redirect_to @diagnosis, notice: 'Diagnosis was successfully updated.' }
         format.json { render :show, status: :ok, location: @diagnosis }
       else
@@ -62,13 +80,13 @@ class DiagnosesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_diagnosis
-      @diagnosis = Diagnosis.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_diagnosis
+    @diagnosis = Diagnosis.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def diagnosis_params
-      params.require(:diagnosis).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def diagnosis_params
+    params.require(:diagnosis).permit(:name)
+  end
 end

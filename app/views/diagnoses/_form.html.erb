@@ -1,7 +1,25 @@
-<%= simple_form_for @diagnosis, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for @diagnosis, :html => {:class => 'form-horizontal'} do |f| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Dados do Diagnóstico</div>
+      <div class="panel-body conteudo_painel">
+        <%= f.input :name %>
+      </div>
+    </div>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    <div class="panel panel-default">
+      <div class="panel-heading">Intervenções para este diagnóstico</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <% @interventions.each do |i| %>
+              <li class="list-group-item"><%= check_box_tag 'selected_interventions[]', i.id, ((@diagnosis.interventions.include? i) ? true : false) %> <%= i.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <br/>
+
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 diagnoses_path, :class => 'btn btn-default' %>
 <% end %>
