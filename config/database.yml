@@ -84,3 +84,5 @@ production:
   username: utineonatal
   password: ppk222!
   #password: <%= ENV['UTINEONATAL_DATABASE_PASSWORD'] %>
+  port: 5433
+  host: localhost
