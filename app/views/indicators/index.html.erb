@@ -17,7 +17,7 @@
     <% @indicators.each do |indicator| %>
       <tr>
         <td><%= link_to indicator.id, indicator_path(indicator) %></td>
-        <td><%= (not indicator.category.nil?) ? indicator.indicator_category.name : 'Sem Categoria' %></td>
+        <td><%= (not indicator.indicator_category_id.nil?) ? indicator.indicator_category.name : 'Sem Categoria' %></td>
         <td><%= indicator.name %></td>
         <td><%= (indicator.has_obs) ? 'Sim' : 'Não'  %></td>
         <td><%= indicator.obs_description %></td>
