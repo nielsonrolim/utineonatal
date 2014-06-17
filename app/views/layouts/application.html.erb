@@ -47,16 +47,19 @@
     </button>
     <%= link_to 'UTI Neonatal', root_path, class: 'navbar-brand' %>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to "Leitos", beds_path %></li>
-        <li><%= link_to "Pacientes", patients_path %></li>
-        <li><%= link_to "Cat. Indicadores", indicator_categories_path %></li>
-        <li><%= link_to "Indicadores", indicators_path %></li>
-        <li><%= link_to "Diagnósticos", diagnoses_path %></li>
-        <li><%= link_to "Intervenções", interventions_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>      </ul>
+      <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Leitos", beds_path %></li>
+            <li><%= link_to "Pacientes", patients_path %></li>
+            <li><%= link_to "Cat. Indicadores", indicator_categories_path %></li>
+            <li><%= link_to "Indicadores", indicators_path %></li>
+            <li><%= link_to "Diagnósticos", diagnoses_path %></li>
+            <li><%= link_to "Intervenções", interventions_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
+          </ul>
+      <% end %>
     </div>
   </div>
 </div>
