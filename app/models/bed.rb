@@ -3,6 +3,10 @@ class Bed < ActiveRecord::Base
   has_many :patients, through: :hospitalizations
 
   def current_patient
-    self.patients.where('hospitalizations.datahora_saida is null')
+    self.patients.where('hospitalizations.checkout is null').first
+  end
+
+  def current_hospitalization
+    self.hospitalizations.where('hospitalizations.checkout is null').first
   end
 end
