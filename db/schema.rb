@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617011649) do
+ActiveRecord::Schema.define(version: 20140617090602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20140617011649) do
     t.integer "intervention_id"
   end
 
+  create_table "diagnoses_visits", id: false, force: true do |t|
+    t.integer "diagnosis_id"
+    t.integer "visit_id"
+  end
+
+  add_index "diagnoses_visits", ["diagnosis_id"], name: "index_diagnoses_visits_on_diagnosis_id", using: :btree
+  add_index "diagnoses_visits", ["visit_id"], name: "index_diagnoses_visits_on_visit_id", using: :btree
+
   create_table "hospitalizations", force: true do |t|
     t.datetime "datahora_entrada"
     t.datetime "datahora_saida"
@@ -53,6 +61,17 @@ ActiveRecord::Schema.define(version: 20140617011649) do
     t.datetime "updated_at"
   end
 
+  create_table "indicator_visits", force: true do |t|
+    t.string   "obs"
+    t.integer  "indicator_id"
+    t.integer  "visit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "indicator_visits", ["indicator_id"], name: "index_indicator_visits_on_indicator_id", using: :btree
+  add_index "indicator_visits", ["visit_id"], name: "index_indicator_visits_on_visit_id", using: :btree
+
   create_table "indicators", force: true do |t|
     t.string   "name"
     t.string   "obs_description"
@@ -67,6 +86,14 @@ ActiveRecord::Schema.define(version: 20140617011649) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "interventions_visits", id: false, force: true do |t|
+    t.integer "intervention_id"
+    t.integer "visit_id"
+  end
+
+  add_index "interventions_visits", ["intervention_id"], name: "index_interventions_visits_on_intervention_id", using: :btree
+  add_index "interventions_visits", ["visit_id"], name: "index_interventions_visits_on_visit_id", using: :btree
 
   create_table "patients", force: true do |t|
     t.string   "name"

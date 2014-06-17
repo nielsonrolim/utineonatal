@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  obs: MyString
+  indicator_id: 
+  visit_id: 
+
+two:
+  obs: MyString
+  indicator_id: 
+  visit_id: 
