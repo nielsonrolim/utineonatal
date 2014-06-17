@@ -16,10 +16,12 @@ class BedsController < ApplicationController
   # GET /beds/new
   def new
     @bed = Bed.new
+    @patients = Patient.order('name asc')
   end
 
   # GET /beds/1/edit
   def edit
+    @patients = Patient.order('name asc')
   end
 
   # POST /beds

@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140617090602) do
   add_index "diagnoses_visits", ["visit_id"], name: "index_diagnoses_visits_on_visit_id", using: :btree
 
   create_table "hospitalizations", force: true do |t|
-    t.datetime "datahora_entrada"
-    t.datetime "datahora_saida"
+    t.datetime "checkin"
+    t.datetime "checkout"
     t.integer  "patient_id"
     t.integer  "bed_id"
     t.datetime "created_at"

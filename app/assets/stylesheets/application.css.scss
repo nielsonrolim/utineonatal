@@ -23,3 +23,16 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
+
+.patient_sex {
+  div {
+    span {
+      label {
+        margin-right: 15px;
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
