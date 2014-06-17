@@ -213,6 +213,8 @@ pt-BR:
       indicator: Indicador
       diagnosis: Diagnóstico
       intervention: Intervenção
+      bed: Leito
+      patient: Paciente
     attributes:
       indicator_category:
         id: Cód
@@ -229,5 +231,12 @@ pt-BR:
       intervention:
         id: Cód
         name: Nome
+      bed:
+        number: Número
+      patient:
+        id: Cód
+        name: Nome
+        birthdate: Data de Nascimento
+        sex: Sexo
     errors:
       <<: *errors

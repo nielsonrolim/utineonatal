@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datahora: 2014-06-16 22:16:02
+  hospitalization_id: 1
+  user_id: 1
+
+two:
+  datahora: 2014-06-16 22:16:02
+  hospitalization_id: 1
+  user_id: 1

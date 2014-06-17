@@ -1,0 +1,7 @@
+<%= simple_form_for @bed, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :number %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                beds_path, :class => 'btn btn-default' %>
+<% end %>

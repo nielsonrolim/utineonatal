@@ -1,0 +1,10 @@
+<%= simple_form_for @patient, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :birthdate %>
+  <%= f.input :sex %>
+  <%= f.collection_radio_buttons :sex, [['masculino', 'Masculino'] ,['feminino', 'Feminino']], :first, :last %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                patients_path, :class => 'btn btn-default' %>
+<% end %>
