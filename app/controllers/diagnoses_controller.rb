@@ -1,4 +1,5 @@
 class DiagnosesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_diagnosis, only: [:show, :edit, :update, :destroy]
 
   # GET /diagnoses

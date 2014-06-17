@@ -1,4 +1,5 @@
 class IndicatorsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_indicator, only: [:show, :edit, :update, :destroy]
 
   # GET /indicators

@@ -1,4 +1,5 @@
 class BedsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bed, only: [:show, :edit, :update, :destroy]
 
   # GET /beds
