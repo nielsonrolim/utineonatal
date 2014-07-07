@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados da Internação</h3>
+  </div>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>Leito</th>
+      <th>Data de Entrada</th>
+      <th>Data de Saída</th>
+      <th>Paciente</th>
+      <th><%= Patient.human_attribute_name(:birthdate) %></th>
+      <th><%= Patient.human_attribute_name(:sex) %></th>
+    </tr>
+    <tr>
+      <td><%= hospitalization.bed.id %></td>
+      <td><%= hospitalization.checkin.strftime("%d/%m/%Y") %></td>
+      <td><%= hospitalization.checkout.strftime("%d/%m/%Y") unless hospitalization.checkout.nil? %></td>
+      <td><%= hospitalization.patient.name %></td>
+      <td><%= hospitalization.patient.birthdate.strftime("%d/%m/%Y") %></td>
+      <td><%= hospitalization.patient.sex %></td>
+    </tr>
+  </table>
+</div>

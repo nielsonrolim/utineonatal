@@ -1,0 +1,67 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados da Visita</h3>
+  </div>
+  <!-- Table -->
+  <table class="table">
+    <tr>
+      <th>Cód.</th>
+      <th>Data da Visita</th>
+      <th>Responsável</th>
+    </tr>
+    <tr>
+      <td><%= visit.id %></td>
+      <td><%= visit.datahora.strftime("%d/%m/%Y") %></td>
+      <td><%= visit.user.name %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Indicadores Identificados</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <% visit.indicators.each do |indicator| %>
+          <li class="list-group-item">
+            <%= indicator.name %>
+            <% if indicator.has_obs %>
+            - <%= indicator.obs_description %> <%= indicator.obs(visit.id) %>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Diagnósticos Realizados</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <% visit.diagnoses.order('name').each do |diagnosis| %>
+          <li class="list-group-item">
+            <%= diagnosis.name %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Intervenções Realizadas</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <% visit.interventions.order('name').each do |intervention| %>
+          <li class="list-group-item">
+            <%= intervention.name %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

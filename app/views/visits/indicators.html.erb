@@ -1,0 +1,29 @@
+<%= render 'hospitalization', hospitalization: @hospitalization %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Indicadores Identificados</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(visit_diagnoses_path(@hospitalization.bed_id), :method => 'post') do %>
+        <% @indicators_categories.each do |category| %>
+            <div class="panel panel-default">
+              <div class="panel-heading"><%= category.name %></div>
+              <!-- List group -->
+              <ul class="list-group">
+                <% category.indicators.order('indicators.name ASC').each do |indicator| %>
+                    <li class="list-group-item">
+                      <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                      <% if indicator.has_obs %>
+                          - <%= indicator.obs_description %> <%= text_field_tag "obs[#{indicator.id}]" %>
+                      <% end %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <%= submit_tag 'Salvar Indicadores', class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>
+

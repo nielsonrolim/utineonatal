@@ -1,0 +1,30 @@
+<%- model_class = Visit -%>
+<div class="page-header">
+  <h1>Histórico de Visitas</h1>
+  <h3>Paciente <%= @patient.name %></h3>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Cód.</th>
+    <th>Data da Visita</th>
+    <th>Leito</th>
+    <th>Responsável</th>
+    <th class="acoes"><%=t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @visits.each do |visit| %>
+      <tr>
+        <td><%= link_to visit.id, "#" %></td>
+        <td><%= visit.datahora.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td><%= visit.hospitalization.bed.id %></td>
+        <td><%= visit.user.name %></td>
+        <td class="acoes">
+          <%= link_to('Detalhes', visit_details_path(visit), :class => 'btn btn-default btn-xs') %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,19 @@
+<%= render 'hospitalization', hospitalization: @hospitalization %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Intervenções Sugeridas</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(visit_finish_path(@hospitalization.bed_id), :method => 'post') do %>
+        <ul class="list-group">
+          <% @interventions.each do |intervention| %>
+              <li class="list-group-item">
+                <%= check_box_tag 'interventions[]', intervention.id %> <%= intervention.name %>
+              </li>
+          <% end %>
+        </ul>
+        <%= submit_tag 'Salvar Intervenções', class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

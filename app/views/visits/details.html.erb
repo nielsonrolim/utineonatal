@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Detalhes da Visita</h1>
+</div>
+
+<%= link_to('javascript:history.back()', :class => 'btn btn-default btn-lg') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+<% end %>
+
+<br /><br />
+
+<%= render 'hospitalization', hospitalization: @visit.hospitalization %>
+
+<%= render 'summary', visit: @visit %>
+
+<%= link_to('javascript:history.back()', :class => 'btn btn-default btn-lg') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+<% end %>

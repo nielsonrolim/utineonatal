@@ -10,7 +10,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:has_obs) %></th>
       <th><%= model_class.human_attribute_name(:obs_description) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="acoes"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +21,7 @@
         <td><%= indicator.name %></td>
         <td><%= (indicator.has_obs) ? 'Sim' : 'Não'  %></td>
         <td><%= indicator.obs_description %></td>
-        <td>
+        <td class="acoes">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_indicator_path(indicator), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

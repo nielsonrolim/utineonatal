@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   get 'home/index'
 
@@ -25,6 +26,14 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'visits/index'
+  get 'bed_history/:bed_id' => 'visits#bed_history', as: :bed_history
+  get 'patient_history/:patient_id' => 'visits#patient_history', as: :patient_history
+  get 'visit/details/:id' => 'visits#details', as: :visit_details
+  get 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators
+  post 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses
+  post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions
+  post 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

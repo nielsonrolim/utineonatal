@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:birthdate) %></th>
       <th><%= model_class.human_attribute_name(:sex) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="acoes"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -17,9 +17,12 @@
       <tr>
         <td><%= link_to patient.id, patient_path(patient) %></td>
         <td><%= patient.name %></td>
-        <td><%= patient.birthdate %></td>
+        <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
         <td><%= patient.sex %></td>
-        <td>
+        <td class="acoes">
+          <% unless patient.hospitalizations.empty? %>
+              <%= link_to('Histórico', patient_history_path(patient), :class => 'btn btn-default btn-xs') %>
+          <% end %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_patient_path(patient), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

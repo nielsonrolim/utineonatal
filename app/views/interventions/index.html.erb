@@ -7,7 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="acoes"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= link_to intervention.id, intervention_path(intervention) %></td>
         <td><%= intervention.name %></td>
-        <td>
+        <td class="acoes">
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_intervention_path(intervention), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
