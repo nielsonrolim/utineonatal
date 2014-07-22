@@ -9,7 +9,12 @@
         <ul class="list-group">
           <% @diagnoses.each do |diagnosis| %>
               <li class="list-group-item">
-                <%= check_box_tag 'diagnoses[]', diagnosis.id %> <%= diagnosis.name %>
+              <li class="list-group-item">
+                <div class="checkbox">
+                  <label>
+                    <%= check_box_tag 'diagnoses[]', diagnosis.id %> <%= diagnosis.name %>
+                  </label>
+                </div>
               </li>
           <% end %>
         </ul>

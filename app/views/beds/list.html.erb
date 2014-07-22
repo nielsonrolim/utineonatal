@@ -1,3 +1,11 @@
+<div class="page-header">
+  <h1>Leitos</h1>
+</div>
+
+<%= link_to 'Gerenciar Leitos', beds_path, :class => 'btn btn-default', :role => 'button' %>
+
+<br /><br />
+
 <div class="row">
 
   <% @beds.each do |bed| %>
@@ -29,7 +37,7 @@
                   <%= link_to 'Visitar', visit_indicators_path(bed), :class => 'btn btn-primary', :role => 'button' %>
                   <%= link_to 'Desocupar', vacate_bed_path(bed), class: 'btn btn-default', role: 'button', data: { confirm: "Tem certeza que deseja desocupar este leito?" } %>
               <% else %>
-                  <a href="#" class="btn btn-primary" role="button">Nova Internação</a>
+                  <%= link_to 'Nova Internação', new_hospitalization_path(bed), :class => 'btn btn-primary', :role => 'button' %>
               <% end %>
             </p>
           </div>

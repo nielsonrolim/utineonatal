@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'visits/index'
   get 'beds/list' => 'beds#list', as: :beds_list
   get 'beds/vacate/:bed_id' => 'beds#vacate', as: :vacate_bed
+  get 'beds/new_hospitalization/:bed_id' => 'beds#new_hospitalization', as: :new_hospitalization
+  get 'beds/new_patient/:bed_id' => 'patients#new', as: :bed_new_patient
+  get 'beds/create_hospitalization/:bed_id/:patient_id' => 'beds#create_hospitalization', as: :beds_create_hospitalization
   get 'bed_history/:bed_id' => 'visits#bed_history', as: :bed_history
   get 'patient_history/:patient_id' => 'visits#patient_history', as: :patient_history
   get 'visit/details/:id' => 'visits#details', as: :visit_details
@@ -26,6 +29,7 @@ Rails.application.routes.draw do
   post 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses
   post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions
   post 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish
+  post 'patient_search' => 'patients#search', as: :patient_search
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

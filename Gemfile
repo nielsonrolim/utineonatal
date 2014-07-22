@@ -45,3 +45,5 @@ gem 'simple_form', '3.1.0.rc1'
 gem 'country_select'
 
 gem 'devise'
+
+gem 'pg_search'

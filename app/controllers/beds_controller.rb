@@ -15,6 +15,29 @@ class BedsController < ApplicationController
     redirect_to beds_list_url
   end
 
+  def new_hospitalization
+    @bed_id = params[:bed_id]
+  end
+
+  def create_hospitalization
+    bed = Bed.find params[:bed_id]
+    patient = Patient.find params[:patient_id]
+
+    existing_hospitalization = Hospitalization.where('patient_id = ? and checkout is null', patient.id).first
+
+    if existing_hospitalization.nil?
+      hospitalization = Hospitalization.new
+      hospitalization.patient = patient
+      hospitalization.bed = bed
+      hospitalization.checkin = Time.now
+      hospitalization.save
+    else
+      flash[:error] = "Paciente #{patient.name} já está internado no Leito #{existing_hospitalization.bed.number}"
+    end
+
+    redirect_to beds_list_url
+  end
+
   # GET /beds
   # GET /beds.json
   def index

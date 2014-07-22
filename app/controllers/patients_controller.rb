@@ -2,6 +2,13 @@ class PatientsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @bed_id = params[:bed_id]
+    @search = params[:search]
+    @patients = Patient.text_search(@search)
+    render 'beds/new_hospitalization'
+  end
+
   # GET /patients
   # GET /patients.json
   def index
@@ -16,6 +23,7 @@ class PatientsController < ApplicationController
   # GET /patients/new
   def new
     @patient = Patient.new
+    @bed_id = params[:bed_id]
   end
 
   # GET /patients/1/edit
@@ -26,10 +34,17 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
+    bed_id = params[:bed_id]
 
     respond_to do |format|
       if @patient.save
-        format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
+        format.html do
+          if bed_id.nil?
+            redirect_to @patient, notice: 'Paciente criado com sucesso.'
+          else
+            redirect_to beds_create_hospitalization_path(bed_id, @patient.id)
+          end
+        end
         format.json { render :show, status: :created, location: @patient }
       else
         format.html { render :new }

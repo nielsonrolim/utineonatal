@@ -18,7 +18,7 @@
         <td><%= link_to patient.id, patient_path(patient) %></td>
         <td><%= patient.name %></td>
         <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
-        <td><%= patient.sex.capitalize %></td>
+        <td><%= patient.sex %></td>
         <td class="acoes">
           <% unless patient.hospitalizations.empty? %>
               <%= link_to('Histórico', patient_history_path(patient), :class => 'btn btn-default btn-xs') %>

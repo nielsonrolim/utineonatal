@@ -1,14 +1,45 @@
-<%= simple_form_for @patient, :html => {:class => 'form-horizontal'} do |f| %>
-    <%= f.input :name %>
-    <%= f.input :birthdate %>
-    <div class="form-group string optional patient_sex">
-      <label for="patient_sex" class="string optional control-label">Sexo</label>
-      <div>
-        <%= f.collection_radio_buttons :sex, [['masculino', 'Masculino'], ['feminino', 'Feminino']], :first, :last %>
-      </div>
-    </div>
-
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                patients_path, :class => 'btn btn-default' %>
+<% if @patient.errors.any? %>
+    <ul>
+      <% @patient.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
 <% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados do Paciente</h3>
+  </div>
+
+  <div class="panel-body">
+    <%= simple_form_for @patient, :html => {:class => 'form-horizontal'} do |f| %>
+        <%= f.input :name %>
+        <%= f.input :birthdate %>
+        <div id="patient_sex" class="form-group string optional patient_sex">
+          <label for="patient_sex" class="string optional control-label">Sexo</label>
+
+          <div>
+            <%= f.collection_radio_buttons :sex, [['masculino', 'Masculino'], ['feminino', 'Feminino']], :first, :last %>
+          </div>
+          <% unless @patient.errors[:sex].empty? %>
+              <span class="help-block"><%= @patient.errors[:sex][0] %></span>
+              <script>
+                  $('#patient_sex').addClass('has-error');
+                  $('.collection_radio_buttons').addClass('error-color');
+              </script>
+          <% end %>
+        </div>
+
+        <%= hidden_field_tag :bed_id, @bed_id %>
+
+        <%= f.button :submit, :class => 'btn-primary' %>
+        <% if @bed_id.nil? %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                        patients_path, :class => 'btn btn-default' %>
+        <% else %>
+            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                        new_hospitalization_path(@bed_id), :class => 'btn btn-default' %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

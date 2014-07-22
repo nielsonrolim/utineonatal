@@ -1,0 +1,94 @@
+<div class="page-header">
+  <h1>Nova Internação</h1>
+</div>
+<%= link_to(bed_new_patient_path(@bed_id), :class => 'btn btn-primary btn-lg btn_new_patient', :role => 'button') do %>
+    <span class="glyphicon glyphicon-plus"></span> Novo Paciente
+<% end %>
+
+<br/><br/>
+
+
+<h3>Pesquisa de Pacientes</h3>
+<%= form_tag(patient_search_path, :method => 'post') do %>
+    <%= hidden_field_tag :bed_id, @bed_id %>
+    <p>
+      <%= text_field_tag 'search', @search, placeholder: 'Nome do Paciente', class: "form-control" %>
+    </p>
+    <button type="submit" class="btn btn-default">
+      <span class="glyphicon glyphicon-search"></span> Buscar
+    </button>
+<% end %>
+
+<br/>
+
+<% unless @patients.nil? %>
+    <p>Pesquisando por <%= @search %></p>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pacientes Encontrados</h3>
+      </div>
+
+      <!-- Table -->
+      <table class="table hidden-xs">
+        <tr>
+          <th>Paciente</th>
+          <th><%= Patient.human_attribute_name(:birthdate) %></th>
+          <th><%= Patient.human_attribute_name(:sex) %></th>
+          <th>Leito</th>
+        </tr>
+        <% @patients.each do |patient| %>
+            <tr>
+              <td><%= link_to patient.name, beds_create_hospitalization_path(@bed_id, patient.id) %></td>
+              <td><%= link_to patient.birthdate.strftime("%d/%m/%Y"), beds_create_hospitalization_path(@bed_id, patient.id) %></td>
+              <td><%= link_to patient.sex, beds_create_hospitalization_path(@bed_id, patient.id) %></td>
+              <td>
+                <% if patient.current_bed.nil? %>
+                    <span>-</span>
+                <% else %>
+                    <%= link_to patient.current_bed.number, beds_create_hospitalization_path(@bed_id, patient.id) %>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+
+      <table class="table visible-xs-block hidden-sm hidden-md hidden-lg">
+        <% @patients.each do |patient| %>
+            <tr>
+              <td>Paciente</td>
+              <td><%= patient.name %></td>
+            </tr>
+            <tr>
+              <td><%= Patient.human_attribute_name(:birthdate) %></td>
+              <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
+            </tr>
+            <tr>
+              <td><%= Patient.human_attribute_name(:sex) %></td>
+              <td><%= patient.sex %></td>
+            </tr>
+            <tr>
+              <td>Leito</td>
+              <td>
+                <% if patient.current_bed.nil? %>
+                    <span>-</span>
+                <% else %>
+                    <%= patient.current_bed.number %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <%= link_to 'Realizar Internação', beds_create_hospitalization_path(@bed_id, patient.id), :class => 'btn btn-primary btn-lg', :role => 'button' %>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                &nbsp;
+              </td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+<% end %>
+
+<br/><br/><br/>
