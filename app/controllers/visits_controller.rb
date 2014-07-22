@@ -22,7 +22,7 @@ class VisitsController < ApplicationController
 
   def diagnoses
     indicators = params[:indicators]
-    obs = params[:obs].select { |o| indicators.include? o }
+    obs = params[:obs].select { |o| indicators.include? o } unless indicators.nil?
     session[:indicators] = indicators
     session[:indicators_obs] = obs
     @diagnoses = Diagnosis.joins(:indicators).where('indicators.id in (?)', indicators).uniq.order('diagnoses.name asc')

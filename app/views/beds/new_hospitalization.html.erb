@@ -35,6 +35,7 @@
           <th><%= Patient.human_attribute_name(:birthdate) %></th>
           <th><%= Patient.human_attribute_name(:sex) %></th>
           <th>Leito</th>
+          <th>&nbsp;</th>
         </tr>
         <% @patients.each do |patient| %>
             <tr>
@@ -47,6 +48,9 @@
                 <% else %>
                     <%= link_to patient.current_bed.number, beds_create_hospitalization_path(@bed_id, patient.id) %>
                 <% end %>
+              </td>
+              <td>
+                <%= link_to('Internar', beds_create_hospitalization_path(@bed_id, patient.id), :class => 'btn btn-default btn-xs', :role => 'button') %>
               </td>
             </tr>
         <% end %>
@@ -78,7 +82,7 @@
             </tr>
             <tr>
               <td colspan="2">
-                <%= link_to 'Realizar Internação', beds_create_hospitalization_path(@bed_id, patient.id), :class => 'btn btn-primary btn-lg', :role => 'button' %>
+                <%= link_to 'Realizar Internação', beds_create_hospitalization_path(@bed_id, patient.id), :class => 'btn btn-default btn-lg', :role => 'button' %>
               </td>
             </tr>
             <tr>
