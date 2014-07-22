@@ -14,7 +14,7 @@
   <% @beds.each do |bed| %>
       <tr>
         <td><%= link_to bed.number, bed_path(bed) %></td>
-        <td><%= (bed.current_patient.nil?) ? 'Disponível' : bed.current_patient.name %></td>
+        <td><%= (bed.available?) ? 'Disponível' : bed.current_patient.name %></td>
         <td class="acoes">
           <% unless bed.current_patient.nil? %>
               <%= link_to('Visitar', visit_indicators_path(bed), :class => 'btn btn-default btn-xs') %>

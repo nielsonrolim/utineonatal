@@ -9,4 +9,8 @@ class Bed < ActiveRecord::Base
   def current_hospitalization
     self.hospitalizations.where('hospitalizations.checkout is null').first
   end
+
+  def available?
+    self.current_patient.nil?
+  end
 end

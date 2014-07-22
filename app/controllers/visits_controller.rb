@@ -1,4 +1,5 @@
 class VisitsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_current_hospitalization, only: [:indicators, :diagnoses, :interventions, :finish]
 
   def bed_history

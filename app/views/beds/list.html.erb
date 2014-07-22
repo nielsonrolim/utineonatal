@@ -1,0 +1,41 @@
+<div class="row">
+
+  <% @beds.each do |bed| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <% if bed.available? %>
+              <div class="bed_available">LIVRE</div>
+          <% else %>
+              <div class="bed_occupied">OCUPADO</div>
+          <% end %>
+          <div class="caption">
+            <h3>Leito <%= bed.number %></h3>
+
+            <p>
+              <% if not bed.available? %>
+                  <%= bed.current_patient.name %><br/>
+                  <%= bed.current_patient.sex.capitalize %> -
+                  Nasc.: <%= bed.current_patient.birthdate.strftime("%d/%m/%Y") %><br/>
+                  Internação: <%= bed.current_hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %>
+              <% else %>
+                  Disponível<br/>
+                  <br/>
+                  <br/>
+              <% end %>
+            </p>
+
+            <p>
+              <% if not bed.available? %>
+                  <%= link_to 'Visitar', visit_indicators_path(bed), :class => 'btn btn-primary', :role => 'button' %>
+                  <%= link_to 'Desocupar', vacate_bed_path(bed), class: 'btn btn-default', role: 'button', data: { confirm: "Tem certeza que deseja desocupar este leito?" } %>
+              <% else %>
+                  <a href="#" class="btn btn-primary" role="button">Nova Internação</a>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+</div>
+

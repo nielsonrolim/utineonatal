@@ -1,19 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get 'home/index'
 
-  resources :interventions
 
-  resources :diagnoses
-
-  resources :indicators
-
-  resources :indicator_categories
-
-  resources :beds
-
-  resources :patients
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -26,7 +15,10 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'home/index'
   get 'visits/index'
+  get 'beds/list' => 'beds#list', as: :beds_list
+  get 'beds/vacate/:bed_id' => 'beds#vacate', as: :vacate_bed
   get 'bed_history/:bed_id' => 'visits#bed_history', as: :bed_history
   get 'patient_history/:patient_id' => 'visits#patient_history', as: :patient_history
   get 'visit/details/:id' => 'visits#details', as: :visit_details
@@ -37,6 +29,17 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  resources :interventions
+
+  resources :diagnoses
+
+  resources :indicators
+
+  resources :indicator_categories
+
+  resources :beds
+
+  resources :patients
 
   # Example resource route with options:
   #   resources :products do

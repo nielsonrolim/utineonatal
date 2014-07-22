@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
-#  username: postgres
-#  password: ppk222
+  username: utineonatal
+  password: ppk222
 #  host: 10.0.2.2
 
 development:
   <<: *default
-  database: utineonatal_development_bak
+  database: utineonatal_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

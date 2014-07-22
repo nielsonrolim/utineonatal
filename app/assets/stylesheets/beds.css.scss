@@ -1,0 +1,18 @@
+.bed_available, .bed_occupied {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 150%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bed_available {
+  background-color: #c1ffc2;
+  color: #6ecf71;
+}
+
+.bed_occupied {
+  background-color: #ffcfd1;
+  color: #c98d8a;
+}

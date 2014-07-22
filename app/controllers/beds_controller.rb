@@ -2,6 +2,19 @@ class BedsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_bed, only: [:show, :edit, :update, :destroy]
 
+  def list
+    @beds = Bed.all
+  end
+
+  def vacate
+    bed = Bed.find params[:bed_id]
+    hospitalization = bed.current_hospitalization
+    hospitalization.checkout = Time.now
+    hospitalization.save
+
+    redirect_to beds_list_url
+  end
+
   # GET /beds
   # GET /beds.json
   def index
