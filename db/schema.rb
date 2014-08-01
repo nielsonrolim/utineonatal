@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140801025810) do
     t.string   "apgar_first_min"
     t.string   "apgar_fifth_min"
     t.string   "gestational_age"
-    t.string   "boold_type"
+    t.string   "blood_type"
   end
 
   create_table "users", force: true do |t|
