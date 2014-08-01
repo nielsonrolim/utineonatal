@@ -29,6 +29,13 @@
               </script>
           <% end %>
         </div>
+        <%= f.input :blood_type, collection: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] %>
+        <%= f.input :apgar_first_min %>
+        <%= f.input :apgar_fifth_min %>
+        <%= f.input :childbirth_type %>
+        <%= f.input :gestational_age %>
+
+
 
         <%= hidden_field_tag :bed_id, @bed_id %>
 

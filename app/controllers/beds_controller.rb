@@ -19,20 +19,31 @@ class BedsController < ApplicationController
     @bed_id = params[:bed_id]
   end
 
+  def new_hospitalization_additional
+    @bed = Bed.find params[:bed_id]
+    @patient = Patient.find params[:patient_id]
+
+    @hospitalization = Hospitalization.where('patient_id = ? and checkout is null', @patient.id).first
+
+    unless @hospitalization.nil?
+      flash[:error] = "Paciente #{@patient.name} já está internado no Leito #{@hospitalization.bed.number}"
+      redirect_to beds_list_url
+    else
+      @hospitalization = Hospitalization.new
+    end
+  end
+
   def create_hospitalization
     bed = Bed.find params[:bed_id]
     patient = Patient.find params[:patient_id]
 
-    existing_hospitalization = Hospitalization.where('patient_id = ? and checkout is null', patient.id).first
+    @hospitalization = Hospitalization.new(hospitalization_params)
 
-    if existing_hospitalization.nil?
-      hospitalization = Hospitalization.new
-      hospitalization.patient = patient
-      hospitalization.bed = bed
-      hospitalization.checkin = Time.now
-      hospitalization.save
-    else
-      flash[:error] = "Paciente #{patient.name} já está internado no Leito #{existing_hospitalization.bed.number}"
+    @hospitalization.bed = bed
+    @hospitalization.patient = patient
+
+    unless @hospitalization.save
+      flash[:error] = "Erro ao salvar Internação"
     end
 
     redirect_to beds_list_url
@@ -180,5 +191,9 @@ class BedsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def bed_params
     params.require(:bed).permit(:number)
+  end
+
+  def hospitalization_params
+    params.require(:hospitalization).permit(:checkin, :checkout, :patient_id, :bed_id, :origin, :transport_conditions, :obs, :reason)
   end
 end

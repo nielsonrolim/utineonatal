@@ -215,6 +215,7 @@ pt-BR:
       intervention: Intervenção
       bed: Leito
       patient: Paciente
+      hospitalization: Internação
     attributes:
       indicator_category:
         id: Cód
@@ -238,5 +239,15 @@ pt-BR:
         name: Nome
         birthdate: Data de Nascimento
         sex: Sexo
+        blood_type: Tipo Sanguíneo
+        apgar_first_min: Apgar 1° minuto
+        apgar_fifth_min: Apgar 5° minuto
+        childbirth_type: Tipo de Parto
+        gestational_age: Idade Gestacional
+      hospitalization:
+        checkin: Data de Entrada
+        origin: Procedência
+        transport_conditions: Condições de Transporte
+        reason: Motivo
     errors:
       <<: *errors
