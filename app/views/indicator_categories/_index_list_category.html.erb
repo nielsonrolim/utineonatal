@@ -1,4 +1,4 @@
-<tr>
+<tr <%= (not indicator_category.parent.nil?) ? '' : 'class=main_category_line' %>>
   <td><%= link_to indicator_category.id, indicator_category_path(indicator_category) %></td>
   <td><%= (indicator_category.parent_id.nil?) ? raw('<span class="glyphicon glyphicon-minus"></span>') : raw("<span class='glyphicon glyphicon-chevron-right'> #{indicator_category.parent.name}</span>") %></td>
   <td><%= (indicator_category.parent_id.nil?) ? raw("<strong>#{indicator_category.name}</strong>") : indicator_category.name %></td>

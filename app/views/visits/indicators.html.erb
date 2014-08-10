@@ -27,7 +27,7 @@
                       </label>
                       <div>
                         <% if indicator.has_obs %>
-                            <%= indicator.obs_description %> <%= text_field_tag "obs[#{indicator.id}]" %>
+                            <%= (not indicator.obs_description.empty?) ? indicator.obs_description : 'Obs.:' %> <%= text_field_tag "obs[#{indicator.id}]" %>
                         <% end %>
                       </div>
                     </div>
