@@ -5,7 +5,7 @@ class IndicatorCategoriesController < ApplicationController
   # GET /indicator_categories
   # GET /indicator_categories.json
   def index
-    @indicator_categories = IndicatorCategory.all
+    @indicator_categories = IndicatorCategory.main_categories
   end
 
   # GET /indicator_categories/1
@@ -29,7 +29,7 @@ class IndicatorCategoriesController < ApplicationController
 
     respond_to do |format|
       if @indicator_category.save
-        format.html { redirect_to @indicator_category, notice: 'Indicator category was successfully created.' }
+        format.html { redirect_to @indicator_category, notice: 'Categoria do Indicador foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @indicator_category }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class IndicatorCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @indicator_category.update(indicator_category_params)
-        format.html { redirect_to @indicator_category, notice: 'Indicator category was successfully updated.' }
+        format.html { redirect_to @indicator_category, notice: 'Categoria do Indicador foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @indicator_category }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class IndicatorCategoriesController < ApplicationController
   def destroy
     @indicator_category.destroy
     respond_to do |format|
-      format.html { redirect_to indicator_categories_url, notice: 'Indicator category was successfully destroyed.' }
+      format.html { redirect_to indicator_categories_url, notice: 'Categoria do Indicador foi apagada com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +70,6 @@ class IndicatorCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indicator_category_params
-      params.require(:indicator_category).permit(:name)
+      params.require(:indicator_category).permit(:name, :parent_id)
     end
 end

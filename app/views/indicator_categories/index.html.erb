@@ -1,33 +1,28 @@
 <%- model_class = IndicatorCategory -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th class="acoes"><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:id) %></th>
+    <th>Categoria Principal</th>
+    <th><%= model_class.human_attribute_name(:name) %></th>
+    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
   </thead>
   <tbody>
-    <% @indicator_categories.each do |indicator_category| %>
-      <tr>
-        <td><%= link_to indicator_category.id, indicator_category_path(indicator_category) %></td>
-        <td><%= indicator_category.name %></td>
-        <td class="acoes">
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_indicator_category_path(indicator_category), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      indicator_category_path(indicator_category),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
+  <% @indicator_categories.each do |indicator_category| %>
+      <%= render 'index_list_category', indicator_category: indicator_category %>
+      <% unless indicator_category.children.empty? %>
+        <% indicator_category.children.order(:name).each do |child| %>
+          <%= render 'index_list_category', indicator_category: child %>
+        <% end %>
+      <% end %>
+  <% end %>
   </tbody>
 </table>
+
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_indicator_category_path,

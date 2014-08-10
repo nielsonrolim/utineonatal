@@ -1,0 +1,14 @@
+<tr>
+  <td><%= link_to indicator_category.id, indicator_category_path(indicator_category) %></td>
+  <td><%= (indicator_category.parent_id.nil?) ? raw('<span class="glyphicon glyphicon-ok"></span>') : indicator_category.parent.name %></td>
+  <td><%=  indicator_category.name  %></td>
+  <td class="acoes">
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_indicator_category_path(indicator_category), :class => 'btn btn-default btn-xs' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                indicator_category_path(indicator_category),
+                :method => :delete,
+                :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                :class => 'btn btn-xs btn-danger' %>
+  </td>
+</tr>
