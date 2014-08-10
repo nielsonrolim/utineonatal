@@ -1,6 +1,6 @@
 class VisitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current_hospitalization, only: [:indicators, :diagnoses, :interventions, :finish]
+  before_action :set_current_hospitalization, only: [:physical_examination, :indicators, :diagnoses, :interventions, :finish]
 
   def bed_history
     @bed = Bed.find(params[:bed_id])
@@ -14,6 +14,10 @@ class VisitsController < ApplicationController
 
   def details
     @visit = Visit.find params[:id]
+  end
+
+  def physical_examination
+
   end
 
   def indicators

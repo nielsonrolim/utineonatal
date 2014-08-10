@@ -39,14 +39,14 @@
         </tr>
         <% @patients.each do |patient| %>
             <tr>
-              <td><%= link_to patient.name, beds_create_hospitalization_path(@bed_id, patient.id) %></td>
-              <td><%= link_to patient.birthdate.strftime("%d/%m/%Y"), beds_create_hospitalization_path(@bed_id, patient.id) %></td>
-              <td><%= link_to patient.sex, beds_create_hospitalization_path(@bed_id, patient.id) %></td>
+              <td><%= link_to patient.name, new_hospitalization_additional_path(@bed_id, patient.id) %></td>
+              <td><%= link_to patient.birthdate.strftime("%d/%m/%Y"), new_hospitalization_additional_path(@bed_id, patient.id) %></td>
+              <td><%= link_to patient.sex, new_hospitalization_additional_path(@bed_id, patient.id) %></td>
               <td>
                 <% if patient.current_bed.nil? %>
                     <span>-</span>
                 <% else %>
-                    <%= link_to patient.current_bed.number, beds_create_hospitalization_path(@bed_id, patient.id) %>
+                    <%= link_to patient.current_bed.number, new_hospitalization_additional_path(@bed_id, patient.id) %>
                 <% end %>
               </td>
               <td>

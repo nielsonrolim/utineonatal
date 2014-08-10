@@ -17,7 +17,7 @@
         <td><%= (bed.available?) ? 'Disponível' : bed.current_patient.name %></td>
         <td class="acoes">
           <% unless bed.current_patient.nil? %>
-              <%= link_to('Visitar', visit_indicators_path(bed), :class => 'btn btn-default btn-xs') %>
+              <%= link_to('Visitar', physical_examination_path(bed), :class => 'btn btn-default btn-xs') %>
           <% end %>
           <% unless bed.hospitalizations.empty? %>
               <%= link_to('Histórico', bed_history_path(bed), :class => 'btn btn-default btn-xs') %>

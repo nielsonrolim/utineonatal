@@ -1,10 +1,12 @@
 <%= render 'hospitalization', hospitalization: @hospitalization %>
 
-<%= session[:indicators] %>
+<div class="page-header">
+  <h3>Diagnósticos Sugeridos</h3>
+</div>
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Diagnósticos Sugeridos</h3>
+    <h3 class="panel-title">Diagnósticos</h3>
   </div>
   <div class="panel-body">
     <%= form_tag(visit_interventions_path(@hospitalization.bed_id), :method => 'post') do %>

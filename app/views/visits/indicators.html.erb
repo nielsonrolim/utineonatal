@@ -4,40 +4,42 @@
   <h3>Indicadores Identificados</h3>
 </div>
 
-<% @main_categories.each do |main_category| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= main_category.name %></h3>
-      </div>
-      <div class="panel-body">
+<%= form_tag(visit_diagnoses_path(@hospitalization.bed_id), :method => 'post') do %>
+    <% @main_categories.each do |main_category| %>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= main_category.name %></h3>
+          </div>
+          <div class="panel-body">
+            <% main_category.children.order(:name).each do |category| %>
+                <div class="panel panel-default">
+                  <div class="panel-heading"><%= category.name %></div>
+                  <div class="panel-body checkbox">
+                    <% category.indicators.order(:name).each do |indicator| %>
+                        <div class="col-sm-6">
+                          <label>
+                            <% unless indicator.indicator_category.exclusive_options %>
+                                <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                            <% else %>
+                                <%= radio_button_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                            <% end %>
 
-        <% main_category.children.order(:name).each do |category| %>
-            <div class="panel panel-default">
-              <div class="panel-heading"><%= category.name %></div>
-              <div class="panel-body checkbox">
-                <% category.indicators.order(:name).each do |indicator| %>
-                    <div class="col-sm-6">
-                      <label>
-                        <% unless indicator.indicator_category.exclusive_options %>
-                            <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                        <% else %>
-                            <%= radio_button_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                        <% end %>
+                          </label>
 
-                      </label>
-                      <div>
-                        <% if indicator.has_obs %>
-                            <%= (not indicator.obs_description.empty?) ? indicator.obs_description : 'Obs.:' %> <%= text_field_tag "obs[#{indicator.id}]" %>
-                        <% end %>
-                      </div>
-                    </div>
-                <% end %>
-              </div>
-            </div>
-        <% end %>
+                          <div>
+                            <% if indicator.has_obs %>
+                                <%= (not indicator.obs_description.empty?) ? indicator.obs_description : 'Obs.:' %> <%= text_field_tag "obs[#{indicator.id}]" %>
+                            <% end %>
+                          </div>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
 
-      </div>
-    </div>
+    <%= submit_tag 'Salvar Indicadores', class: 'btn btn-primary' %>
 <% end %>
-
 

@@ -16,10 +16,12 @@ class IndicatorCategoriesController < ApplicationController
   # GET /indicator_categories/new
   def new
     @indicator_category = IndicatorCategory.new
+    @main_categories = IndicatorCategory.main_categories
   end
 
   # GET /indicator_categories/1/edit
   def edit
+    @main_categories = IndicatorCategory.main_categories.where('id != ?', @indicator_category.id)
   end
 
   # POST /indicator_categories
