@@ -7,7 +7,7 @@
             new_indicator_path,
             :class => 'btn btn-primary' %>
 
-<br/><br/>
+<br /><br />
 
 <% @main_categories.each do |main_category| %>
     <div class="panel panel-default">
@@ -60,24 +60,24 @@
     </div>
 <% end %>
 
+<div class="page-header">
+  <h3>Indicadores não reclassificados</h3>
+</div>
 
-<% unless @indicators.empty? %>
-    <div class="page-header">
-      <h3>Indicadores não reclassificados</h3>
-    </div>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:indicator_category_id) %></th>
-        <th><%= model_class.human_attribute_name(:name) %></th>
-        <th><%= model_class.human_attribute_name(:has_obs) %></th>
-        <th><%= model_class.human_attribute_name(:obs_description) %></th>
-        <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @indicators.each do |indicator| %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= model_class.human_attribute_name(:id) %></th>
+    <th><%= model_class.human_attribute_name(:indicator_category_id) %></th>
+    <th><%= model_class.human_attribute_name(:name) %></th>
+    <th><%= model_class.human_attribute_name(:has_obs) %></th>
+    <th><%= model_class.human_attribute_name(:obs_description) %></th>
+    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @indicators.each do |indicator| %>
+      <% if indicator.indicator_category.parent.nil? %>
           <tr>
             <td><%= link_to indicator.id, indicator_path(indicator) %></td>
             <td><%= (not indicator.indicator_category_id.nil?) ? indicator.indicator_category.name : 'Sem Categoria' %></td>
@@ -95,11 +95,11 @@
             </td>
           </tr>
       <% end %>
-      </tbody>
-    </table>
-<% end %>
+  <% end %>
+  </tbody>
+</table>
 
-<hr/>
+<hr />
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_indicator_path,
