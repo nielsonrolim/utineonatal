@@ -18,9 +18,13 @@
                 <% category.indicators.order(:name).each do |indicator| %>
                     <div class="col-sm-6">
                       <label>
-                        <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                      </label>
+                        <% unless indicator.indicator_category.exclusive_options %>
+                            <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                        <% else %>
+                            <%= radio_button_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                        <% end %>
 
+                      </label>
                       <div>
                         <% if indicator.has_obs %>
                             <%= indicator.obs_description %> <%= text_field_tag "obs[#{indicator.id}]" %>
