@@ -7,7 +7,7 @@
             new_indicator_path,
             :class => 'btn btn-primary' %>
 
-<br /><br />
+<br/><br/>
 
 <% @main_categories.each do |main_category| %>
     <div class="panel panel-default">
@@ -77,29 +77,27 @@
   </thead>
   <tbody>
   <% @indicators.each do |indicator| %>
-      <% if indicator.indicator_category.parent.nil? %>
-          <tr>
-            <td><%= link_to indicator.id, indicator_path(indicator) %></td>
-            <td><%= (not indicator.indicator_category_id.nil?) ? indicator.indicator_category.name : 'Sem Categoria' %></td>
-            <td><%= indicator.name %></td>
-            <td><%= (indicator.has_obs) ? 'Sim' : 'Não' %></td>
-            <td><%= indicator.obs_description %></td>
-            <td class="acoes">
-              <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_indicator_path(indicator), :class => 'btn btn-default btn-xs' %>
-              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          indicator_path(indicator),
-                          :method => :delete,
-                          :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                          :class => 'btn btn-xs btn-danger' %>
-            </td>
-          </tr>
-      <% end %>
+      <tr>
+        <td><%= link_to indicator.id, indicator_path(indicator) %></td>
+        <td><%= (not indicator.indicator_category_id.nil?) ? indicator.indicator_category.name : 'Sem Categoria' %></td>
+        <td><%= indicator.name %></td>
+        <td><%= (indicator.has_obs) ? 'Sim' : 'Não' %></td>
+        <td><%= indicator.obs_description %></td>
+        <td class="acoes">
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_indicator_path(indicator), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      indicator_path(indicator),
+                      :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
   <% end %>
   </tbody>
 </table>
 
-<hr />
+<hr/>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_indicator_path,
