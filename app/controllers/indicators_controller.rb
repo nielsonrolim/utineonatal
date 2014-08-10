@@ -5,8 +5,8 @@ class IndicatorsController < ApplicationController
   # GET /indicators
   # GET /indicators.json
   def index
-    #@indicators = Indicator.all
-    @indicators = Indicator.includes(:indicator_category).order('indicator_categories.name, indicators.name')
+    @main_categories = IndicatorCategory.main_categories
+    #@indicators = Indicator.includes(:indicator_category).order('indicator_categories.name, indicators.name')
   end
 
   # GET /indicators/1
@@ -18,17 +18,21 @@ class IndicatorsController < ApplicationController
   def new
     @indicator = Indicator.new
     @diagnoses = Diagnosis.order(:name)
+    @main_categories = IndicatorCategory.main_categories
   end
 
   # GET /indicators/1/edit
   def edit
     @diagnoses = Diagnosis.order(:name)
+    @main_categories = IndicatorCategory.main_categories
   end
 
   # POST /indicators
   # POST /indicators.json
   def create
     @indicator = Indicator.new(indicator_params)
+    @diagnoses = Diagnosis.order(:name)
+    @main_categories = IndicatorCategory.main_categories
 
     respond_to do |format|
       if @indicator.save
@@ -40,7 +44,7 @@ class IndicatorsController < ApplicationController
             @indicator.diagnoses << diagnosis
           end
         end
-        format.html { redirect_to @indicator, notice: 'Indicator was successfully created.' }
+        format.html { redirect_to @indicator, notice: 'Indicador foi adicionado com sucesso.' }
         format.json { render :show, status: :created, location: @indicator }
       else
         format.html { render :new }
@@ -52,6 +56,9 @@ class IndicatorsController < ApplicationController
   # PATCH/PUT /indicators/1
   # PATCH/PUT /indicators/1.json
   def update
+    @diagnoses = Diagnosis.order(:name)
+    @main_categories = IndicatorCategory.main_categories
+
     respond_to do |format|
       if @indicator.update(indicator_params)
         @indicator.diagnoses = []
@@ -62,7 +69,7 @@ class IndicatorsController < ApplicationController
             @indicator.diagnoses << diagnosis
           end
         end
-        format.html { redirect_to @indicator, notice: 'Indicator was successfully updated.' }
+        format.html { redirect_to @indicator, notice: 'Indicador foi apagado com sucesso.' }
         format.json { render :show, status: :ok, location: @indicator }
       else
         format.html { render :edit }
@@ -76,19 +83,19 @@ class IndicatorsController < ApplicationController
   def destroy
     @indicator.destroy
     respond_to do |format|
-      format.html { redirect_to indicators_url, notice: 'Indicator was successfully destroyed.' }
+      format.html { redirect_to indicators_url, notice: 'Indicador foi apagado com sucesso.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_indicator
-      @indicator = Indicator.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_indicator
+    @indicator = Indicator.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def indicator_params
-      params.require(:indicator).permit(:name, :obs_description, :has_obs, :indicator_category_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def indicator_params
+    params.require(:indicator).permit(:name, :obs_description, :has_obs, :indicator_category_id)
+  end
 end

@@ -18,7 +18,7 @@ class InterventionsControllerTest < ActionController::TestCase
 
   test "should create intervention" do
     assert_difference('Intervention.count') do
-      post :create, intervention: { name: @intervention.name }
+      post :create, intervention: {name: @intervention.name}
     end
 
     assert_redirected_to intervention_path(assigns(:intervention))
@@ -35,7 +35,7 @@ class InterventionsControllerTest < ActionController::TestCase
   end
 
   test "should update intervention" do
-    patch :update, id: @intervention, intervention: { name: @intervention.name }
+    patch :update, id: @intervention, intervention: {name: @intervention.name}
     assert_redirected_to intervention_path(assigns(:intervention))
   end
 

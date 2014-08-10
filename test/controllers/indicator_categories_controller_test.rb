@@ -18,7 +18,7 @@ class IndicatorCategoriesControllerTest < ActionController::TestCase
 
   test "should create indicator_category" do
     assert_difference('IndicatorCategory.count') do
-      post :create, indicator_category: { name: @indicator_category.name }
+      post :create, indicator_category: {name: @indicator_category.name}
     end
 
     assert_redirected_to indicator_category_path(assigns(:indicator_category))
@@ -35,7 +35,7 @@ class IndicatorCategoriesControllerTest < ActionController::TestCase
   end
 
   test "should update indicator_category" do
-    patch :update, id: @indicator_category, indicator_category: { name: @indicator_category.name }
+    patch :update, id: @indicator_category, indicator_category: {name: @indicator_category.name}
     assert_redirected_to indicator_category_path(assigns(:indicator_category))
   end
 

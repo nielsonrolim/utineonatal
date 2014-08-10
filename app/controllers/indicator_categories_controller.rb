@@ -63,13 +63,13 @@ class IndicatorCategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_indicator_category
-      @indicator_category = IndicatorCategory.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_indicator_category
+    @indicator_category = IndicatorCategory.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def indicator_category_params
-      params.require(:indicator_category).permit(:name, :parent_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def indicator_category_params
+    params.require(:indicator_category).permit(:name, :parent_id)
+  end
 end

@@ -15,9 +15,9 @@
   <% @indicator_categories.each do |indicator_category| %>
       <%= render 'index_list_category', indicator_category: indicator_category %>
       <% unless indicator_category.children.empty? %>
-        <% indicator_category.children.order(:name).each do |child| %>
-          <%= render 'index_list_category', indicator_category: child %>
-        <% end %>
+          <% indicator_category.children.order(:name).each do |child| %>
+              <%= render 'index_list_category', indicator_category: child %>
+          <% end %>
       <% end %>
   <% end %>
   </tbody>

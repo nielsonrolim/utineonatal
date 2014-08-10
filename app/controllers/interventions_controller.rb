@@ -63,13 +63,13 @@ class InterventionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_intervention
-      @intervention = Intervention.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_intervention
+    @intervention = Intervention.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def intervention_params
-      params.require(:intervention).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def intervention_params
+    params.require(:intervention).permit(:name)
+  end
 end

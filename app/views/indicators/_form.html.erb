@@ -4,7 +4,9 @@
       <div class="panel-heading">Dados do Indicador</div>
       <div class="panel-body conteudo_painel">
         <%= f.input :name %>
-        <%= f.association :indicator_category, label: 'Categoria', prompt: "-- Selecione uma categoria --" %>
+        <%= f.association :indicator_category, label: 'Categoria', prompt: "-- Selecione uma categoria --",
+                          :collection => IndicatorCategory.main_categories, :as => :grouped_select, :group_method => :children,
+                          :group_label_method => :name %>
         <%= f.input :has_obs %>
         <%= f.input :obs_description %>
       </div>

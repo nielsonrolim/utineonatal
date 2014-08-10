@@ -18,7 +18,7 @@ class DiagnosesControllerTest < ActionController::TestCase
 
   test "should create diagnosis" do
     assert_difference('Diagnosis.count') do
-      post :create, diagnosis: { name: @diagnosis.name }
+      post :create, diagnosis: {name: @diagnosis.name}
     end
 
     assert_redirected_to diagnosis_path(assigns(:diagnosis))
@@ -35,7 +35,7 @@ class DiagnosesControllerTest < ActionController::TestCase
   end
 
   test "should update diagnosis" do
-    patch :update, id: @diagnosis, diagnosis: { name: @diagnosis.name }
+    patch :update, id: @diagnosis, diagnosis: {name: @diagnosis.name}
     assert_redirected_to diagnosis_path(assigns(:diagnosis))
   end
 

@@ -220,6 +220,7 @@ pt-BR:
       indicator_category:
         id: Cód
         name: Nome
+        exclusive_options: Opções Exclusivas?
       indicator:
         id: Cód
         name: Nome

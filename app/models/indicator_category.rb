@@ -9,4 +9,9 @@ class IndicatorCategory < ActiveRecord::Base
   def self.main_categories
     self.where('parent_id is NULL').order('name')
   end
+
+  def all_indicators
+  	self.children.collect { |ch| ch.indicators }.flatten
+  end
 end
+

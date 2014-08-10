@@ -1,5 +1,42 @@
 <%= render 'hospitalization', hospitalization: @hospitalization %>
 
+<div class="page-header">
+  <h3>Indicadores Identificados</h3>
+</div>
+
+<% @main_categories.each do |main_category| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= main_category.name %></h3>
+      </div>
+      <div class="panel-body">
+
+        <% main_category.children.order(:name).each do |category| %>
+            <div class="panel panel-default">
+              <div class="panel-heading"><%= category.name %></div>
+              <div class="panel-body checkbox">
+                <% category.indicators.order(:name).each do |indicator| %>
+                    <div class="col-sm-6">
+                      <label>
+                        <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
+                      </label>
+
+                      <div>
+                        <% if indicator.has_obs %>
+                            <%= indicator.obs_description %> <%= text_field_tag "obs[#{indicator.id}]" %>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
+<% end %>
+
+
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Indicadores Identificados</h3>
@@ -13,14 +50,6 @@
               <ul class="list-group">
                 <% category.indicators.order('indicators.name ASC').each do |indicator| %>
                     <li class="list-group-item">
-                      <div class="checkbox">
-                        <label>
-                          <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                        </label>
-                        <% if indicator.has_obs %>
-                            - <%= indicator.obs_description %> <%= text_field_tag "obs[#{indicator.id}]" %>
-                        <% end %>
-                      </div>
                     </li>
                 <% end %>
               </ul>

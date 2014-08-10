@@ -18,7 +18,7 @@ class IndicatorsControllerTest < ActionController::TestCase
 
   test "should create indicator" do
     assert_difference('Indicator.count') do
-      post :create, indicator: { has_obs: @indicator.has_obs, indicator_category_id: @indicator.indicator_category_id, name: @indicator.name, obs_description: @indicator.obs_description }
+      post :create, indicator: {has_obs: @indicator.has_obs, indicator_category_id: @indicator.indicator_category_id, name: @indicator.name, obs_description: @indicator.obs_description}
     end
 
     assert_redirected_to indicator_path(assigns(:indicator))
@@ -35,7 +35,7 @@ class IndicatorsControllerTest < ActionController::TestCase
   end
 
   test "should update indicator" do
-    patch :update, id: @indicator, indicator: { has_obs: @indicator.has_obs, indicator_category_id: @indicator.indicator_category_id, name: @indicator.name, obs_description: @indicator.obs_description }
+    patch :update, id: @indicator, indicator: {has_obs: @indicator.has_obs, indicator_category_id: @indicator.indicator_category_id, name: @indicator.name, obs_description: @indicator.obs_description}
     assert_redirected_to indicator_path(assigns(:indicator))
   end
 

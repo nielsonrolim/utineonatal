@@ -18,7 +18,7 @@ class BedsControllerTest < ActionController::TestCase
 
   test "should create bed" do
     assert_difference('Bed.count') do
-      post :create, bed: { number: @bed.number }
+      post :create, bed: {number: @bed.number}
     end
 
     assert_redirected_to bed_path(assigns(:bed))
@@ -35,7 +35,7 @@ class BedsControllerTest < ActionController::TestCase
   end
 
   test "should update bed" do
-    patch :update, id: @bed, bed: { number: @bed.number }
+    patch :update, id: @bed, bed: {number: @bed.number}
     assert_redirected_to bed_path(assigns(:bed))
   end
 

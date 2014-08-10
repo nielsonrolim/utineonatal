@@ -1,16 +1,16 @@
 .loginbox {
-   border: 1px solid #E7E7E7;
-   padding: 20px;
-   width: 50%;
-   margin: 0 auto;
+  border: 1px solid #E7E7E7;
+  padding: 20px;
+  width: 50%;
+  margin: 0 auto;
 
-   .user_remember_me {
-     div {
-       float: left;
-       margin-right: 5px;
-     }
-   }
- }
+  .user_remember_me {
+    div {
+      float: left;
+      margin-right: 5px;
+    }
+  }
+}
 
 @media (max-width: 480px) {
   .loginbox {

@@ -17,6 +17,7 @@ class VisitsController < ApplicationController
   end
 
   def indicators
+    @main_categories = IndicatorCategory.main_categories
     @indicators_categories = IndicatorCategory.order('name asc')
   end
 
