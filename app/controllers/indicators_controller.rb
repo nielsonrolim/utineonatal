@@ -6,7 +6,7 @@ class IndicatorsController < ApplicationController
   # GET /indicators.json
   def index
     @main_categories = IndicatorCategory.main_categories
-    #@indicators = Indicator.includes(:indicator_category).order('indicator_categories.name, indicators.name')
+    @indicators = Indicator.includes(:indicator_category).order('indicator_categories.name, indicators.name')
   end
 
   # GET /indicators/1
