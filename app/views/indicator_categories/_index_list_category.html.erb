@@ -2,6 +2,13 @@
   <td><%= link_to indicator_category.id, indicator_category_path(indicator_category) %></td>
   <td><%= (indicator_category.parent_id.nil?) ? raw('<span class="glyphicon glyphicon-minus"></span>') : raw("<span class='glyphicon glyphicon-chevron-right'> #{indicator_category.parent.name}</span>") %></td>
   <td><%= (indicator_category.parent_id.nil?) ? raw("<strong>#{indicator_category.name}</strong>") : indicator_category.name %></td>
+  <td>
+    <% unless indicator_category.parent_id.nil? %>
+        <%= (indicator_category.exclusive_options) ? 'Sim' : 'Não' %>
+    <% else %>
+        <span class="glyphicon glyphicon-minus"></span>
+    <% end %>
+  </td>
   <td class="acoes">
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_indicator_category_path(indicator_category), :class => 'btn btn-default btn-xs' %>
