@@ -4,6 +4,8 @@ class Patient < ActiveRecord::Base
   has_many :hospitalizations
   has_many :beds, through: :hospitalizations
 
+  self.per_page = 30
+
   validates_presence_of :name, :sex, :birthdate
 
   pg_search_scope :search, against: [:name],

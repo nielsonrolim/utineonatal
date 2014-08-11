@@ -9,6 +9,7 @@ class PatientsController < ApplicationController
     if @bed_id
       render 'beds/new_hospitalization'
     else
+      @patients = @patients.page(params[:page])
       render 'patients/index'
     end
   end
@@ -16,7 +17,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    @patients = Patient.order(:name).page(params[:page])
   end
 
   # GET /patients/1

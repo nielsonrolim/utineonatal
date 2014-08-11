@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions
   post 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish
   post 'patient_search' => 'patients#search', as: :patient_search
+  get 'patient_search/:page' => 'patients#search', as: :patient_search_paginate
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
