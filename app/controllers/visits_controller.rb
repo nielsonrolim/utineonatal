@@ -17,10 +17,12 @@ class VisitsController < ApplicationController
   end
 
   def physical_examination
-
+    @bed_id = params[:bed_id]
+    @visit = Visit.new
   end
 
   def indicators
+    session[:visit_params] = visit_params
     @main_categories = IndicatorCategory.main_categories
     @indicators_categories = IndicatorCategory.order('name asc')
   end
@@ -41,7 +43,7 @@ class VisitsController < ApplicationController
 
   def finish
     Visit.transaction do
-      @visit = Visit.new
+      @visit = Visit.new(session[:visit_params])
       @visit.datahora = Time.now
       @visit.hospitalization_id = @hospitalization.id
       @visit.user_id = current_user.id
@@ -76,4 +78,9 @@ class VisitsController < ApplicationController
     @bed = Bed.find(params[:bed_id])
     @hospitalization = @bed.current_hospitalization
   end
+
+  def visit_params
+    params.require(:visit).permit(:datahora, :hospitalization_id, :user_id, :head_circumference, :thoracic_perimeter, :waist_circumference, :weight, :stature, :incubator_temperature, :heart_rate, :respiratory_rate, :blood_pressure_min, :blood_pressure_max, :pulse, :temperature)
+  end
+
 end

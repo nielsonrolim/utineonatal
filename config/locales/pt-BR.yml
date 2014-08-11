@@ -216,6 +216,7 @@ pt-BR:
       bed: Leito
       patient: Paciente
       hospitalization: Internação
+      visit: Visita
     attributes:
       indicator_category:
         id: Cód
@@ -250,5 +251,18 @@ pt-BR:
         origin: Procedência
         transport_conditions: Condições de Transporte
         reason: Motivo
+      visit:
+        head_circumference: Perímetro Cefálico
+        thoracic_perimeter: Perímetro Toráxico
+        waist_circumference: Perímetro Abdominal
+        weight: Peso
+        stature: Estatura
+        incubator_temperature: Temperatura da Incubadora
+        heart_rate: Frequência Cardíaca
+        respiratory_rate: Frequência Respiratória
+        blood_pressure_min: Pressão Arterial Min.
+        blood_pressure_max: Pressão Arterial Max.
+        pulse: Pulso
+        temperature: Temperatura
     errors:
       <<: *errors

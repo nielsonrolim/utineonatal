@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'visit/details/:id' => 'visits#details', as: :visit_details
   get 'visit/physical_examination/:bed_id' => 'visits#physical_examination', as: :physical_examination
   get 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators
+  post 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators_post
   post 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses
   post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions
   post 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish

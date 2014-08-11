@@ -3,3 +3,50 @@
 <div class="page-header">
   <h3>Exame Físico</h3>
 </div>
+
+<%= simple_form_for @visit,
+                    :url => url_for(:action => 'indicators', :controller => 'visits'),
+                    :method => 'post',
+                    :html => {:class => 'form-horizontal'} do |f| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Dados Antropométricos</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <%= f.input :weight %>
+        <%= f.input :stature %>
+        <%= f.input :head_circumference %>
+        <%= f.input :thoracic_perimeter %>
+        <%= f.input :waist_circumference %>
+
+        <%= hidden_field_tag :bed_id, @bed_id %>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Sinais Vitais</h3>
+      </div>
+
+      <div class="panel-body">
+
+        <%= f.input :temperature %>
+        <%= f.input :incubator_temperature %>
+        <%= f.input :pulse %>
+        <%= f.input :heart_rate %>
+        <%= f.input :respiratory_rate %>
+        <%= f.input :blood_pressure_min %>
+        <%= f.input :blood_pressure_max %>
+
+        <%= hidden_field_tag :bed_id, @bed.id %>
+
+      </div>
+    </div>
+    <%= f.submit 'Selecionar Indicadores', :class => 'btn btn-default btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                beds_list_path, :class => 'btn btn-default' %>
+
+<% end %>

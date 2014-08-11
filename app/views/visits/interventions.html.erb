@@ -13,7 +13,6 @@
         <ul class="list-group">
           <% @interventions.each do |intervention| %>
               <li class="list-group-item">
-              <li class="list-group-item">
                 <div class="checkbox">
                   <label>
                     <%= check_box_tag 'interventions[]', intervention.id %> <%= intervention.name %>

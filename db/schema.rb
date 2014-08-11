@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810200258) do
+ActiveRecord::Schema.define(version: 20140811010456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,18 @@ ActiveRecord::Schema.define(version: 20140810200258) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "head_circumference",    precision: 2, scale: 0
+    t.decimal  "thoracic_perimeter",    precision: 2, scale: 0
+    t.decimal  "waist_circumference",   precision: 2, scale: 0
+    t.decimal  "weight",                precision: 2, scale: 0
+    t.decimal  "stature",               precision: 2, scale: 0
+    t.decimal  "incubator_temperature", precision: 2, scale: 0
+    t.integer  "heart_rate"
+    t.integer  "respiratory_rate"
+    t.integer  "blood_pressure_min"
+    t.integer  "blood_pressure_max"
+    t.decimal  "pulse",                 precision: 2, scale: 0
+    t.decimal  "temperature",           precision: 2, scale: 0
   end
 
 end
