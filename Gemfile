@@ -47,3 +47,5 @@ gem 'country_select'
 gem 'devise'
 
 gem 'pg_search'
+
+gem 'will_paginate'

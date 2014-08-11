@@ -6,7 +6,11 @@ class PatientsController < ApplicationController
     @bed_id = params[:bed_id]
     @search = params[:search]
     @patients = Patient.text_search(@search)
-    render 'beds/new_hospitalization'
+    if @bed_id
+      render 'beds/new_hospitalization'
+    else
+      render 'patients/index'
+    end
   end
 
   # GET /patients
