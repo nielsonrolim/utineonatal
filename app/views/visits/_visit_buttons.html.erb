@@ -1,0 +1,10 @@
+<%= content_tag :button, type: :submit, name: 'commit', class: 'btn btn-primary' do %>
+    Continuar <span class="glyphicon glyphicon-chevron-right"></span>
+<% end %>
+<div class="pull-right">
+  <%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
+      <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+  <% end %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              cancel_visit_path, :class => 'btn btn-default' %>
+</div>

@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados da Internação</h3>
+  </div>
+
+  <table class="table table-striped">
+    <tr>
+      <td class="col-sm-4">Leito</td>
+      <td class="col-sm-8"><%= hospitalization.bed.id %></td>
+    </tr>
+    <tr>
+      <td>Data de Entrada</td>
+      <td><%= hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Data de Saída</td>
+      <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
+    </tr>
+    <tr>
+      <td>Motivo da Internação</td>
+      <td><%= hospitalization.reason %></td>
+    </tr>
+    <tr>
+      <td>Origem</td>
+      <td><%= hospitalization.origin %></td>
+    </tr>
+    <tr>
+      <td>Condições de Transporte</td>
+      <td><%= hospitalization.transport_conditions %></td>
+    </tr>
+    <tr>
+      <td>Observação</td>
+      <td><%= hospitalization.obs %></td>
+    </tr>
+
+  </table>
+
+</div>
+

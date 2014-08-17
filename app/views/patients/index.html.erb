@@ -6,7 +6,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_patient_path,
             :class => 'btn btn-primary' %>
-<br />
+<br/>
 
 <%= form_tag(patient_search_path, :method => 'post') do %>
     <p>
@@ -24,8 +24,10 @@
   <tr>
     <th><%= model_class.human_attribute_name(:id) %></th>
     <th><%= model_class.human_attribute_name(:name) %></th>
+    <th><%= model_class.human_attribute_name(:medical_record_number) %></th>
     <th><%= model_class.human_attribute_name(:birthdate) %></th>
     <th><%= model_class.human_attribute_name(:sex) %></th>
+    <th>Leito</th>
     <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
@@ -34,11 +36,19 @@
       <tr>
         <td><%= link_to patient.id, patient_path(patient) %></td>
         <td><%= patient.name %></td>
+        <td><%= patient.medical_record_number %></td>
         <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
         <td><%= patient.sex %></td>
+        <td>
+          <% if patient.current_bed %>
+              <%= link_to('Visitar', physical_examination_path(patient.current_bed.number), :class => 'btn btn-default btn-xs') %>
+          <% else %>
+              -
+          <% end %>
+        </td>
         <td class="acoes">
           <% unless patient.hospitalizations.empty? %>
-              <%= link_to('Histórico', patient_history_path(patient), :class => 'btn btn-default btn-xs') %>
+              <%= link_to('Histórico', hospitalizations_path(patient), :class => 'btn btn-default btn-xs') %>
           <% end %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_patient_path(patient), :class => 'btn btn-default btn-xs' %>
@@ -53,9 +63,9 @@
   </tbody>
 </table>
 
-<%= will_paginate @patients %>
+<%= will_paginate @visits %>
 
-<br />
+<br/>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_patient_path,

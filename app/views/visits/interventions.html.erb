@@ -1,27 +1,36 @@
-<%= render 'hospitalization', hospitalization: @hospitalization %>
+<%= render 'hospitalizations/summary', hospitalization: @hospitalization %>
 
 <div class="page-header">
   <h3>Intervenções Sugeridas</h3>
 </div>
 
-<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title">Intervenções</h3>
-  </div>
-  <div class="panel-body">
-    <%= form_tag(visit_finish_path(@hospitalization.bed_id), :method => 'post') do %>
-        <ul class="list-group">
-          <% @interventions.each do |intervention| %>
-              <li class="list-group-item">
-                <div class="checkbox">
-                  <label>
-                    <%= check_box_tag 'interventions[]', intervention.id %> <%= intervention.name %>
-                  </label>
-                </div>
-              </li>
-          <% end %>
-        </ul>
-        <%= submit_tag 'Salvar Intervenções', class: 'btn btn-primary' %>
+<%= form_tag(visit_finish_path(@hospitalization.bed_id), :method => 'post') do %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Intervenções</h3>
+      </div>
+
+      <ul class="list-group">
+        <% @interventions.each do |intervention| %>
+            <li class="list-group-item">
+              <div>
+                <label>
+                  <%= check_box_tag 'interventions[]', intervention.id %> <%= intervention.name %>
+                </label>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+
+    </div>
+    <%= content_tag :button, type: :submit, name: 'commit', class: 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon-floppy-disk"></span> Finalizar e Salvar
     <% end %>
-  </div>
-</div>
+    <div class="pull-right">
+      <%= link_to(visit_diagnoses_get_path(@hospitalization.bed_id), :class => 'btn btn-default') do %>
+          <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+      <% end %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  cancel_visit_path, :class => 'btn btn-default' %>
+    </div>
+<% end %>

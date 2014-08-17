@@ -8,17 +8,11 @@
       <th>Leito</th>
       <th>Data de Entrada</th>
       <th>Data de Saída</th>
-      <th>Paciente</th>
-      <th><%= Patient.human_attribute_name(:birthdate) %></th>
-      <th><%= Patient.human_attribute_name(:sex) %></th>
     </tr>
     <tr>
       <td><%= hospitalization.bed.id %></td>
       <td><%= hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %></td>
       <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
-      <td><%= hospitalization.patient.name %></td>
-      <td><%= hospitalization.patient.birthdate.strftime("%d/%m/%Y") %></td>
-      <td><%= hospitalization.patient.sex %></td>
     </tr>
   </table>
 
@@ -35,18 +29,6 @@
     <tr>
       <td>Data de Saída</td>
       <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
-    </tr>
-    <tr>
-      <td>Paciente</td>
-      <td><%= hospitalization.patient.name %></td>
-    </tr>
-    <tr>
-      <td><%= Patient.human_attribute_name(:birthdate) %></td>
-      <td><%= hospitalization.patient.birthdate.strftime("%d/%m/%Y") %></td>
-    </tr>
-    <tr>
-      <td><%= Patient.human_attribute_name(:sex) %></td>
-      <td><<%= hospitalization.patient.sex %>/td>
     </tr>
   </table>
 

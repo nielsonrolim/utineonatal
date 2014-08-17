@@ -23,10 +23,16 @@ Rails.application.routes.draw do
   get 'beds/new_patient/:bed_id' => 'patients#new', as: :bed_new_patient
   post 'beds/create_hospitalization/:bed_id/:patient_id' => 'beds#create_hospitalization', as: :beds_create_hospitalization
   get 'bed_history/:bed_id' => 'visits#bed_history', as: :bed_history
-  get 'patient_history/:patient_id' => 'visits#patient_history', as: :patient_history
+  get 'patient_history/:patient_id' => 'hospitalizations#index', as: :hospitalizations
+  get 'hospitalizations/:id' => 'hospitalizations#show', as: :hospitalization
+  get 'patient_visits/:patient_id' => 'visits#patient_history', as: :patient_visit_history
   get 'visit/details/:id' => 'visits#details', as: :visit_details
+  get 'visit/new/:bed_id' => 'visits#new', as: :visit_new
   get 'visit/physical_examination/:bed_id' => 'visits#physical_examination', as: :physical_examination
   get 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators
+  get 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses_get
+  get 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions_get
+  get 'cancel_visit/' => 'visits#cancel_visit', as: :cancel_visit
   post 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators_post
   post 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses
   post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions

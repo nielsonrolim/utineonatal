@@ -1,45 +1,61 @@
-<%= render 'hospitalization', hospitalization: @hospitalization %>
+<%= render 'hospitalizations/summary', hospitalization: @hospitalization %>
 
 <div class="page-header">
   <h3>Indicadores Identificados</h3>
 </div>
 
 <%= form_tag(visit_diagnoses_path(@hospitalization.bed_id), :method => 'post') do %>
-    <% @main_categories.each do |main_category| %>
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= main_category.name %></h3>
-          </div>
-          <div class="panel-body">
-            <% main_category.children.order(:name).each do |category| %>
-                <div class="panel panel-default">
-                  <div class="panel-heading"><%= category.name %></div>
-                  <div class="panel-body checkbox">
-                    <% category.indicators.order(:name).each do |indicator| %>
-                        <div class="col-sm-6">
-                          <label>
-                            <% unless indicator.indicator_category.exclusive_options %>
-                                <%= check_box_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                            <% else %>
-                                <%= radio_button_tag 'indicators[]', indicator.id %> <%= indicator.name %>
-                            <% end %>
+    <div class="panel-group" id="accordion">
+      <% @main_categories.each_with_index do |main_category, index| %>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_category_<%= main_category.id %>">
+                  <%= main_category.name %>
+                </a>
+              </h3>
+            </div>
+            <div id="collapse_category_<%= main_category.id %>" class="panel-collapse collapse <%= (index == 0 || main_category.any_indicator_in_array?(@indicators_ids)) ? 'in' : '' %>">
+              <div class="panel-body">
+                <% main_category.children_ordered_by_name.each do |category| %>
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><%= category.name %></div>
+                      <div class="panel-body">
+                        <% category.indicators.order(:name).each do |indicator| %>
+                            <div class="col-lg-4 col-sm-6 line_item">
+                              <label>
+                                <% unless indicator.indicator_category.exclusive_options %>
+                                    <%= check_box_tag 'indicators[]', indicator.id, @indicators_ids.include?(indicator.id) %> <%= indicator.name %>
+                                <% else %>
+                                    <%= radio_button_tag 'indicators[]', indicator.id, @indicators_ids.include?(indicator.id) %> <%= indicator.name %>
+                                <% end %>
 
-                          </label>
+                              </label>
 
-                          <div>
-                            <% if indicator.has_obs %>
-                                <%= (not indicator.obs_description.empty?) ? indicator.obs_description : 'Obs.:' %> <%= text_field_tag "obs[#{indicator.id}]" %>
-                            <% end %>
-                          </div>
-                        </div>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
+                              <div>
+                                <% if indicator.has_obs %>
+                                    <%= (not indicator.obs_description.empty?) ? indicator.obs_description : 'Obs.:' %> <%= text_field_tag "obs[#{indicator.id}]", ((!@obs.nil?) ? @obs[indicator.id] : nil), class: 'form-control' %>
+                                <% end %>
+                              </div>
+                            </div>
+                        <% end %>
+                      </div>
+                    </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
+      <% end %>
+    </div>
+    <%= content_tag :button, type: :submit, name: 'commit', class: 'btn btn-primary' do %>
+        Continuar <span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
-
-    <%= submit_tag 'Salvar Indicadores', class: 'btn btn-primary' %>
+    <div class="pull-right">
+      <%= link_to(physical_examination_path(@hospitalization.bed_id), :class => 'btn btn-default') do %>
+          <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+      <% end %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  cancel_visit_path, :class => 'btn btn-default' %>
+    </div>
 <% end %>
 

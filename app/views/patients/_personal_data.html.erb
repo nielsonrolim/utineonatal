@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados do Paciente</h3>
+  </div>
+
+  <table class="table hidden-xs">
+    <tr>
+      <th>Nome</th>
+      <th>Nº Prontuário</th>
+      <th><%= Patient.human_attribute_name(:birthdate) %></th>
+      <th><%= Patient.human_attribute_name(:sex) %></th>
+    </tr>
+    <tr>
+      <td><%= patient.name %></td>
+      <td><%= patient.medical_record_number %></td>
+      <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
+      <td><%= patient.sex %></td>
+    </tr>
+  </table>
+
+  <table class="table visible-xs-block hidden-sm hidden-md hidden-lg">
+    <tr>
+      <td>Nome</td>
+      <td><%= patient.name %></td>
+    </tr>
+    <tr>
+      <td>Nº Prontuário</td>
+      <td><%= patient.medical_record_number %></td>
+    </tr>
+    <tr>
+      <td><%= Patient.human_attribute_name(:birthdate) %></td>
+      <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
+    </tr>
+    <tr>
+      <td><%= Patient.human_attribute_name(:sex) %></td>
+      <td><<%= patient.sex %>/td>
+    </tr>
+  </table>
+
+</div>
+

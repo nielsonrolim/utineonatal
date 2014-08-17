@@ -1,0 +1,46 @@
+<%- model_class = Hospitalization -%>
+<div class="page-header">
+  <h1>Histórico de Internações</h1>
+</div>
+
+<%= link_to(patients_path, :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Pacientes
+<% end %>
+<br /><br />
+
+<%= render 'patients/personal_data', patient: @patient %>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Cód.</th>
+    <th>Leito</th>
+    <th>Data da Entrada</th>
+    <th>Data da Saída</th>
+
+    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @hospitalizations.each do |hospitalization| %>
+      <tr>
+        <td><%= link_to hospitalization.id, hospitalization_path(hospitalization) %></td>
+        <td><%= hospitalization.bed.id %></td>
+        <td><%= hospitalization.checkin.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td><%= (hospitalization.checkout.nil?) ? '-' : hospitalization.checkout.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td class="acoes">
+          <%= link_to('Histórico de Visitas', patient_visit_history_path(hospitalization.patient), :class => 'btn btn-default btn-xs') %>
+          <%= link_to('Detalhes', hospitalization_path(hospitalization), :class => 'btn btn-default btn-xs') %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @hospitalizations %>
+
+<br />
+
+<%= link_to(patients_path, :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Pacientes
+<% end %>

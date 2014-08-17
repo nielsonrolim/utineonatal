@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Detalhes da Visita</h1>
+  <h1>Detalhes da Internação</h1>
 </div>
 
 <%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
@@ -7,9 +7,9 @@
 <% end %>
 <br /><br />
 
-<%= render 'hospitalizations/summary', hospitalization: @visit.hospitalization %>
+<%= render 'patients/personal_data', patient: @hospitalization.patient %>
 
-<%= render 'summary', visit: @visit %>
+<%= render 'hospitalizations/data', hospitalization: @hospitalization %>
 
 <%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
     <span class="glyphicon glyphicon-chevron-left"></span> Voltar

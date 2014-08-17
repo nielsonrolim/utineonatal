@@ -14,6 +14,7 @@
   <div class="panel-body">
     <%= simple_form_for @patient, :html => {:class => 'form-horizontal'} do |f| %>
         <%= f.input :name %>
+        <%= f.input :medical_record_number %>
         <%= f.input :birthdate %>
         <div id="patient_sex" class="form-group string optional patient_sex">
           <label for="patient_sex" class="string optional control-label">Sexo</label>

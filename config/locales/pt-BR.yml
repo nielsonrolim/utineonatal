@@ -239,6 +239,7 @@ pt-BR:
       patient:
         id: Cód
         name: Nome
+        medical_record_number: Número do Prontuário
         birthdate: Data de Nascimento
         sex: Sexo
         blood_type: Tipo Sanguíneo

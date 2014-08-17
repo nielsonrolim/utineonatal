@@ -34,7 +34,7 @@
 
             <p>
               <% if not bed.available? %>
-                  <%= link_to 'Visitar', physical_examination_path(bed), :class => 'btn btn-primary', :role => 'button' %>
+                  <%= link_to 'Visitar', visit_new_path(bed), :class => 'btn btn-primary', :role => 'button' %>
                   <%= link_to 'Desocupar', vacate_bed_path(bed), class: 'btn btn-default', role: 'button', data: {confirm: "Tem certeza que deseja desocupar este leito?"} %>
               <% else %>
                   <%= link_to 'Nova Internação', new_hospitalization_path(bed), :class => 'btn btn-primary', :role => 'button' %>

@@ -1,9 +1,15 @@
 <%- model_class = Visit -%>
 <div class="page-header">
-  <h1>Histórico de Visitas</h1>
-
-  <h3>Paciente <%= @patient.name %></h3>
+  <h1>Histórico de Visitas por Paciente</h1>
 </div>
+
+<%= link_to(hospitalizations_path(@patient), :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Histórico de Internações
+<% end %>
+<br /><br />
+
+<%= render 'patients/personal_data', patient: @patient %>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -28,4 +34,13 @@
   <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @patients %>
+
+<br/>
+
+<%= link_to(hospitalizations_path(@patient), :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Histórico de Internações
+<% end %>
+
 

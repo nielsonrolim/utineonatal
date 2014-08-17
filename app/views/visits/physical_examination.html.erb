@@ -1,4 +1,4 @@
-<%= render 'hospitalization', hospitalization: @hospitalization %>
+<%= render 'hospitalizations/summary', hospitalization: @hospitalization %>
 
 <div class="page-header">
   <h3>Exame Físico</h3>
@@ -45,8 +45,16 @@
 
       </div>
     </div>
-    <%= f.submit 'Selecionar Indicadores', :class => 'btn btn-default btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                beds_list_path, :class => 'btn btn-default' %>
+
+    <%= content_tag :button, type: :submit, name: 'commit', class: 'btn btn-primary' do %>
+        Continuar <span class="glyphicon glyphicon-chevron-right"></span>
+    <% end %>
+    <div class="pull-right">
+      <%= link_to(beds_list_path, :class => 'btn btn-default') do %>
+          <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+      <% end %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  cancel_visit_path, :class => 'btn btn-default' %>
+    </div>
 
 <% end %>
