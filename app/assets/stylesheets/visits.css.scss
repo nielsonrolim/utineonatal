@@ -8,3 +8,9 @@
     width: 100%;
   }
 }
+
+#accordion {
+  .panel-heading a {
+    border: 1px solid red;
+  }
+}

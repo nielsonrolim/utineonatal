@@ -32,7 +32,11 @@ class VisitsController < ApplicationController
   end
 
   def indicators
-    @visit = Visit.new(visit_params)
+    unless params[:visit].nil?
+      @visit = Visit.new(visit_params)
+    else
+      @visit = Visit.new
+    end
 
     if @visit.valid?
       if session[:visit_params].nil?
@@ -49,8 +53,6 @@ class VisitsController < ApplicationController
     else
       render 'physical_examination'
     end
-
-
   end
 
   def diagnoses
