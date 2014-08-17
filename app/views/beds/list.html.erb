@@ -2,7 +2,10 @@
   <h1>Leitos</h1>
 </div>
 
-<%= link_to 'Gerenciar Leitos', beds_path, :class => 'btn btn-default', :role => 'button' %>
+<% if current_user.is_admin? %>
+    <%= link_to 'Gerenciar Leitos', beds_path, :class => 'btn btn-default', :role => 'button' %>
+<% end %>
+
 
 <br/><br/>
 

@@ -1,5 +1,6 @@
 class IndicatorCategoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_admin!
   before_action :set_indicator_category, only: [:show, :edit, :update, :destroy]
 
   # GET /indicator_categories

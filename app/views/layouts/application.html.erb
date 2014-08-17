@@ -40,7 +40,7 @@
 
 <div class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <%= link_to(image_tag('logoUFPB.gif'), root_path, class: 'navbar-brand logoufpb') %>
+    <%= link_to(image_tag('logo_hulw.jpg'), root_path, class: 'navbar-brand logoufpb') %>
     <%= link_to('UTI Neonatal', root_path, class: 'navbar-brand') %>
     <% if user_signed_in? %>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -52,10 +52,12 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Leitos", beds_list_path %></li>
             <li><%= link_to "Pacientes", patients_path %></li>
-            <li><%= link_to "Cat. Indicadores", indicator_categories_path %></li>
-            <li><%= link_to "Indicadores", indicators_path %></li>
-            <li><%= link_to "Diagnósticos", diagnoses_path %></li>
-            <li><%= link_to "Intervenções", interventions_path %></li>
+            <% if current_user.is_admin? %>
+                <li><%= link_to "Cat. Indicadores", indicator_categories_path %></li>
+                <li><%= link_to "Indicadores", indicators_path %></li>
+                <li><%= link_to "Diagnósticos", diagnoses_path %></li>
+                <li><%= link_to "Intervenções", interventions_path %></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
@@ -74,8 +76,8 @@
   </div>
   <!--/row-->
 
-  <footer>
-    <p>&copy; UFPB 2014</p>
+  <footer class="footer clearfix">
+    <p>&copy; Hospital Universitário Lauro Wanderley 2014</p>
   </footer>
 
 </div>
