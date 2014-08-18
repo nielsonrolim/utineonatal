@@ -23,11 +23,11 @@
                 <table class="table table-striped">
                   <thead>
                   <tr>
-                    <th><%= model_class.human_attribute_name(:id) %></th>
-                    <th>Indicador</th>
-                    <th><%= model_class.human_attribute_name(:has_obs) %></th>
-                    <th><%= model_class.human_attribute_name(:obs_description) %></th>
-                    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+                    <th class="col-lg-1"><%= model_class.human_attribute_name(:id) %></th>
+                    <th class="col-lg-4">Indicador</th>
+                    <th class="col-lg-2"><%= model_class.human_attribute_name(:has_obs) %></th>
+                    <th class="col-lg-4"><%= model_class.human_attribute_name(:obs_description) %></th>
+                    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
                   </tr>
                   </thead>
                   <tbody>

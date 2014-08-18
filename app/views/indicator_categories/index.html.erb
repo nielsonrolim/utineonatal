@@ -5,11 +5,11 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:id) %></th>
-    <th>Categoria Principal</th>
-    <th><%= model_class.human_attribute_name(:name) %></th>
-    <th><%= model_class.human_attribute_name(:exclusive_options) %></th>
-    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-lg-1"><%= model_class.human_attribute_name(:id) %></th>
+    <th class="col-lg-4">Categoria Principal</th>
+    <th class="col-lg-4"><%= model_class.human_attribute_name(:name) %></th>
+    <th class="col-lg-2"><%= model_class.human_attribute_name(:exclusive_options) %></th>
+    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>

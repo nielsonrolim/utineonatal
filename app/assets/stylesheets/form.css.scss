@@ -22,7 +22,34 @@
 
 .patient_search_input {
   width: 300px;
-  float: right;
+  float: left;
   margin-right: 10px;
+  float: right;
+  position: relative;
+  right: 90px;
 }
 
+.patient_search_button {
+  position: relative;
+  float: right;
+  right: -310px;
+}
+
+@media (max-width: 568px) {
+  .patient_search_input {
+    width: 200px;
+  }
+  .patient_search_input {
+    width: 100%;
+    margin: 0px;
+    position: static;
+  }
+  .patient_search_button {
+    position: static;
+    margin: 5px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 320px) {
+
+}
