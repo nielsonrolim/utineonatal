@@ -15,11 +15,11 @@
 
       <div class="panel-body">
 
-        <%= f.input :weight, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :stature, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :head_circumference, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :thoracic_perimeter, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :waist_circumference, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
+        <%= f.input :weight, :input_html => {:type => 'text', :'data-mask' => '9?.99' } %>
+        <%= f.input :stature, :input_html => {:type => 'text', :'data-mask' => '9?.99' } %>
+        <%= f.input :head_circumference, :input_html => {:type => 'text', :'data-mask' => '9?.99' } %>
+        <%= f.input :thoracic_perimeter, :input_html => {:type => 'text', :'data-mask' => '9?.99' } %>
+        <%= f.input :waist_circumference, :input_html => {:type => 'text', :'data-mask' => '9?.99' } %>
 
         <%= hidden_field_tag :bed_id, @bed_id %>
 
@@ -33,13 +33,13 @@
 
       <div class="panel-body">
 
-        <%= f.input :temperature, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :incubator_temperature, :input_html => {:type => 'text', :'data-mask' => '99.99' } %>
-        <%= f.input :pulse, :input_html => {:type => 'text', :'data-mask' => '999' } %>
-        <%= f.input :heart_rate, :input_html => {:type => 'text', :'data-mask' => '999' } %>
-        <%= f.input :respiratory_rate, :input_html => {:type => 'text', :'data-mask' => '999' } %>
-        <%= f.input :blood_pressure_min, :input_html => {:type => 'text', :'data-mask' => '99' } %>
-        <%= f.input :blood_pressure_max, :input_html => {:type => 'text', :'data-mask' => '99' } %>
+        <%= f.input :temperature, :input_html => {:type => 'text', :'data-mask' => '99?.99' } %>
+        <%= f.input :incubator_temperature, :input_html => {:type => 'text', :'data-mask' => '99?.99' } %>
+        <%= f.input :pulse, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
+        <%= f.input :heart_rate, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
+        <%= f.input :respiratory_rate, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
+        <%= f.input :blood_pressure_min, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
+        <%= f.input :blood_pressure_max, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
 
         <%= hidden_field_tag :bed_id, @bed.id %>
 

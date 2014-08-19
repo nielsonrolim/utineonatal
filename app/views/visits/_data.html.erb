@@ -91,26 +91,6 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Indicadores Identificados</h3>
-  </div>
-
-  <ul class="list-group">
-    <% visit.indicators.each do |indicator| %>
-        <li class="list-group-item">
-          <h4><%= indicator.name %></h4>
-          <% if indicator.has_obs_for_visit?(visit.id) %>
-              <div>
-                <%= indicator.obs_description %> <%= indicator.obs(visit.id) %>
-              </div>
-          <% end %>
-        </li>
-    <% end %>
-  </ul>
-</div>
-
-
-<div class="panel panel-info">
-  <div class="panel-heading">
     <h3 class="panel-title">Diagnósticos Realizados</h3>
   </div>
   <ul class="list-group">

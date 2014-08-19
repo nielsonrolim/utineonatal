@@ -73,6 +73,6 @@ class IndicatorCategoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def indicator_category_params
-    params.require(:indicator_category).permit(:name, :parent_id)
+    params.require(:indicator_category).permit(:name, :parent_id, :exclusive_options)
   end
 end
