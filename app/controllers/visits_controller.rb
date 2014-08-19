@@ -14,7 +14,7 @@ class VisitsController < ApplicationController
 
   def details
     @visit = Visit.find params[:id]
-    @first_visit = @visit.hospitalization.visits.order('datahora desc').first
+    @first_visit = @visit.hospitalization.visits.order('datahora asc').first
 
     @visit.head_circumference = @first_visit.head_circumference if @visit.head_circumference.nil?
     @visit.thoracic_perimeter = @first_visit.thoracic_perimeter if @visit.thoracic_perimeter.nil?
