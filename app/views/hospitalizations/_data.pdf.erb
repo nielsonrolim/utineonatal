@@ -1,0 +1,39 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados da Internação</h3>
+  </div>
+
+  <table class="table table-striped">
+    <tr>
+      <th class="">Leito</th>
+      <th>Visitas Realizadas</th>
+      <th><%= Hospitalization.human_attribute_name(:checkin) %></th>
+      <th><%= Hospitalization.human_attribute_name(:checkout) %></th>
+    </tr>
+    <tr>
+      <td><%= hospitalization.bed.id %></td>
+      <td><%= hospitalization.visits.count %></td>
+      <td><%= hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %></td>
+      <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
+    </tr>
+    <tr>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:reason) %></th>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:origin) %></th>
+    </tr>
+    <tr>
+      <td colspan="2"><%= hospitalization.reason %></td>
+      <td colspan="2"><%= hospitalization.origin %></td>
+    </tr>
+    <tr>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:transport_conditions) %></th>
+      <th colspan="2">Observações</th>
+    </tr>
+    <tr>
+      <td colspan="2"><%= hospitalization.transport_conditions %></td>
+      <td colspan="2"><%= hospitalization.obs %></td>
+    </tr>
+
+  </table>
+
+</div>
+

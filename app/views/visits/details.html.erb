@@ -5,6 +5,11 @@
 <%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
     <span class="glyphicon glyphicon-chevron-left"></span> Voltar
 <% end %>
+
+<%= link_to(visit_details_pdf_path(@visit.id), :target => '_blank', :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-print"></span> Imprimir
+<% end %>
+
 <br /><br />
 
 <%= render 'patients/data', patient: @visit.hospitalization.patient %>

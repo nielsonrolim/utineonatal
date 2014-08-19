@@ -1,0 +1,30 @@
+body {
+    font-size: 10px !important;
+}
+
+h2 {
+    font-size: 14px !important;
+}
+
+h3 {
+    font-size: 12px !important;
+}
+
+h4 {
+    font-size: 11px !important;
+}
+
+#pdf_header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#pdf_header img {
+}
+
+#pdf_header h3 {
+ text-align: center;
+}
+
+.indicators {
+    page-break-before: always;
+}

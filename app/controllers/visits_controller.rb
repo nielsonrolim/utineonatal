@@ -14,6 +14,13 @@ class VisitsController < ApplicationController
 
   def details
     @visit = Visit.find params[:id]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  :pdf => "file_name.pdf",
+                :show_as_html => params[:debug].present?
+      end
+    end
   end
 
   def new

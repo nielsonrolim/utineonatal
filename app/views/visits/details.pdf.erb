@@ -1,0 +1,8 @@
+<h3 class="text-center">Visita ao Paciente <%= @visit.hospitalization.patient.name %></h3>
+
+<%= render 'patients/data', patient: @visit.hospitalization.patient %>
+
+<%= render 'hospitalizations/data', hospitalization: @visit.hospitalization %>
+
+<%= render 'visits/data', visit: @visit %>
+

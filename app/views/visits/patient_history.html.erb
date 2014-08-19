@@ -13,11 +13,11 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Cód.</th>
-    <th>Data da Visita</th>
-    <th>Leito</th>
-    <th>Responsável</th>
-    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-md-1">Cód.</th>
+    <th class="col-md-3">Data da Visita</th>
+    <th class="col-md-1">Leito</th>
+    <th class="col-md-6">Responsável</th>
+    <th class="acoes col-md-1"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
@@ -29,6 +29,7 @@
         <td><%= visit.user.name %></td>
         <td class="acoes">
           <%= link_to('Detalhes', visit_details_path(visit), :class => 'btn btn-default btn-xs') %>
+          <%= link_to('Imprimir', visit_details_pdf_path(visit), :target => '_blank', :class => 'btn btn-default btn-xs') %>
         </td>
       </tr>
   <% end %>

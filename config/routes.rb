@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'hospitalizations/:id' => 'hospitalizations#show', as: :hospitalization
   get 'patient_visits/:patient_id' => 'visits#patient_history', as: :patient_visit_history
   get 'visit/details/:id' => 'visits#details', as: :visit_details
+  get 'visit/details/:id.pdf' => 'visits#details', as: :visit_details_pdf
   get 'visit/new/:bed_id' => 'visits#new', as: :visit_new
   get 'visit/physical_examination/:bed_id' => 'visits#physical_examination', as: :physical_examination
   get 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators
