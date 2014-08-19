@@ -14,6 +14,21 @@ class VisitsController < ApplicationController
 
   def details
     @visit = Visit.find params[:id]
+    @first_visit = @visit.hospitalization.visits.order('datahora desc').first
+
+    @visit.head_circumference = @first_visit.head_circumference if @visit.head_circumference.nil?
+    @visit.thoracic_perimeter = @first_visit.thoracic_perimeter if @visit.thoracic_perimeter.nil?
+    @visit.waist_circumference = @first_visit.waist_circumference if @visit.waist_circumference.nil?
+    @visit.weight = @first_visit.weight if @visit.weight.nil?
+    @visit.stature = @first_visit.stature if @visit.stature.nil?
+    @visit.incubator_temperature = @first_visit.incubator_temperature if @visit.incubator_temperature.nil?
+    @visit.heart_rate = @first_visit.heart_rate if @visit.heart_rate.nil?
+    @visit.respiratory_rate = @first_visit.respiratory_rate if @visit.respiratory_rate.nil?
+    @visit.blood_pressure_min = @first_visit.blood_pressure_min if @visit.blood_pressure_min.nil?
+    @visit.blood_pressure_max = @first_visit.blood_pressure_max if @visit.blood_pressure_max.nil?
+    @visit.pulse = @first_visit.pulse if @visit.pulse.nil?
+    @visit.temperature = @first_visit.temperature if @visit.temperature.nil?
+
     respond_to do |format|
       format.html
       format.pdf do
