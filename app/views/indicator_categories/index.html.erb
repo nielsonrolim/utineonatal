@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_indicator_category_path,
+            :class => 'btn btn-primary' %>
+
+<br /><br />
+
 <table class="table table-striped">
   <thead>
   <tr>

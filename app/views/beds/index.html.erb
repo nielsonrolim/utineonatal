@@ -2,12 +2,19 @@
 <div class="page-header">
   <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bed_path,
+            :class => 'btn btn-primary' %>
+
+<br /><br />
+
 <table class="table table-striped">
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:number) %></th>
-    <th>Paciente Atual</th>
-    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-lg-1"><%= model_class.human_attribute_name(:number) %></th>
+    <th class="col-lg-10">Paciente Atual</th>
+    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>

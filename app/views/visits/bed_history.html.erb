@@ -1,17 +1,20 @@
 <%- model_class = Visit -%>
 <div class="page-header">
   <h1>Histórico de Visitas por Leito</h1>
-
   <h3>Leito <%= @bed.id %></h3>
 </div>
+<%= link_to(beds_path, :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Cadastro de Leitos
+<% end %>
+<br /><br />
 <table class="table table-striped">
   <thead>
   <tr>
-    <th>Cód.</th>
-    <th>Data da Visita</th>
-    <th>Paciente</th>
-    <th>Responsável</th>
-    <th class="acoes"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-lg-1">Cód.</th>
+    <th class="col-lg-2">Data da Visita</th>
+    <th class="col-lg-4">Paciente</th>
+    <th class="col-lg-4">Responsável</th>
+    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
@@ -28,3 +31,7 @@
   <% end %>
   </tbody>
 </table>
+
+<%= link_to(beds_path, :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Cadastro de Leitos
+<% end %>

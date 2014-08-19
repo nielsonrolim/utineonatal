@@ -5,8 +5,7 @@
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_patient_path,
-            :class => 'btn btn-primary' %>
-<br/>
+            :class => 'btn btn-primary btn-new-with-search' %>
 
 <%= form_tag(patient_search_path, :method => 'post') do %>
     <p>
@@ -16,6 +15,8 @@
       </button>
     </p>
 <% end %>
+
+<br class="clearfix" /><br /><br />
 
 <%= will_paginate @patients %>
 

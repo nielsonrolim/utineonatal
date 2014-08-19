@@ -1,16 +1,18 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Dados da Internação</h3>
   </div>
   <!-- Table -->
   <table class="table hidden-xs">
-    <tr>
+    <tr class="active">
       <th>Leito</th>
+      <th>Visitas Realizadas</th>
       <th>Data de Entrada</th>
       <th>Data de Saída</th>
     </tr>
     <tr>
       <td><%= hospitalization.bed.id %></td>
+      <td><%= hospitalization.visits.count %></td>
       <td><%= hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %></td>
       <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
     </tr>

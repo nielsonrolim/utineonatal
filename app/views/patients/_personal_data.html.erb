@@ -5,8 +5,8 @@
 
   <table class="table hidden-xs">
     <tr>
-      <th>Nome</th>
-      <th>Nº Prontuário</th>
+      <th><%= Patient.human_attribute_name(:name) %></th>
+      <th><%= Patient.human_attribute_name(:medical_record_number) %></th>
       <th><%= Patient.human_attribute_name(:birthdate) %></th>
       <th><%= Patient.human_attribute_name(:sex) %></th>
     </tr>

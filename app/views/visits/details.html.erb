@@ -7,9 +7,11 @@
 <% end %>
 <br /><br />
 
-<%= render 'hospitalizations/summary', hospitalization: @visit.hospitalization %>
+<%= render 'patients/data', patient: @visit.hospitalization.patient %>
 
-<%= render 'summary', visit: @visit %>
+<%= render 'hospitalizations/data', hospitalization: @visit.hospitalization %>
+
+<%= render 'visits/data', visit: @visit %>
 
 <%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
     <span class="glyphicon glyphicon-chevron-left"></span> Voltar

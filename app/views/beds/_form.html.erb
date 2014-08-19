@@ -1,12 +1,5 @@
 <%= simple_form_for @bed, :html => {:class => 'form-horizontal'} do |f| %>
     <%= f.input :number %>
-    <div class="form-group string optional patient">
-      <label for="patient_id" class="string optional control-label">Paciente</label>
-
-      <div>
-        <%= select_tag "patient_id", options_from_collection_for_select(@patients, "id", "name", @current_patient_id), include_blank: true %>
-      </div>
-    </div>
 
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

@@ -1,0 +1,71 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados do Paciente</h3>
+  </div>
+
+  <table class="table table-striped hidden-xs">
+    <tr>
+      <th colspan="2"><%= Patient.human_attribute_name(:name) %></th>
+      <th><%= Patient.human_attribute_name(:medical_record_number) %></th>
+      <th><%= Patient.human_attribute_name(:birthdate) %></th>
+      <th><%= Patient.human_attribute_name(:sex) %></th>
+    </tr>
+    <tr>
+      <td colspan="2"><%= patient.name %></td>
+      <td><%= patient.medical_record_number %></td>
+      <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
+      <td><%= patient.sex %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:apgar_first_min) %></th>
+      <th><%= Patient.human_attribute_name(:apgar_fifth_min) %></th>
+      <th><%= Patient.human_attribute_name(:childbirth_type) %></th>
+      <th><%= Patient.human_attribute_name(:gestational_age) %></th>
+      <th><%= Patient.human_attribute_name(:blood_type) %></th>
+    </tr>
+    <tr>
+      <td><%= patient.apgar_first_min %></td>
+      <td><%= patient.apgar_fifth_min %></td>
+      <td><%= patient.childbirth_type %></td>
+      <td><%= patient.gestational_age %></td>
+      <td><%= patient.blood_type %></td>
+    </tr>
+  </table>
+
+  <table class="table table-striped  visible-xs-block hidden-sm hidden-md hidden-lg">
+    <tr>
+      <th class="col-xs-5 col-sm-3 col-md-2"><%= Patient.human_attribute_name(:name) %></th>
+      <td class="col-xs-7 col-sm-9 col-md-10"><%= patient.name %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:medical_record_number) %></th>
+      <td><%= patient.medical_record_number %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:birthdate) %></th>
+      <td><%= patient.birthdate.strftime("%d/%m/%Y") %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:sex) %></th>
+      <td><%= patient.sex %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:apgar_first_min) %></th>
+      <td><%= patient.apgar_first_min %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:childbirth_type) %></th>
+      <td><%= patient.childbirth_type %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:gestational_age) %></th>
+      <td><%= patient.gestational_age %></td>
+    </tr>
+    <tr>
+      <th><%= Patient.human_attribute_name(:blood_type) %></th>
+      <td><%= patient.blood_type %></td>
+    </tr>
+  </table>
+
+</div>
+

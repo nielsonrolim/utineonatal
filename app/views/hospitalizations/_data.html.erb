@@ -1,36 +1,36 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Dados da Internação</h3>
   </div>
 
   <table class="table table-striped">
     <tr>
-      <td class="col-sm-4">Leito</td>
-      <td class="col-sm-8"><%= hospitalization.bed.id %></td>
+      <th class="">Leito</th>
+      <th>Visitas Realizadas</th>
+      <th><%= Hospitalization.human_attribute_name(:checkin) %></th>
+      <th><%= Hospitalization.human_attribute_name(:checkout) %></th>
     </tr>
     <tr>
-      <td>Data de Entrada</td>
+      <td><%= hospitalization.bed.id %></td>
+      <td><%= hospitalization.visits.count %></td>
       <td><%= hospitalization.checkin.strftime("%d/%m/%Y %H:%M") %></td>
-    </tr>
-    <tr>
-      <td>Data de Saída</td>
       <td><%= hospitalization.checkout.strftime("%d/%m/%Y %H:%M") unless hospitalization.checkout.nil? %></td>
     </tr>
     <tr>
-      <td>Motivo da Internação</td>
-      <td><%= hospitalization.reason %></td>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:reason) %></th>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:origin) %></th>
     </tr>
     <tr>
-      <td>Origem</td>
-      <td><%= hospitalization.origin %></td>
+      <td colspan="2"><%= hospitalization.reason %></td>
+      <td colspan="2"><%= hospitalization.origin %></td>
     </tr>
     <tr>
-      <td>Condições de Transporte</td>
-      <td><%= hospitalization.transport_conditions %></td>
+      <th colspan="2"><%= Hospitalization.human_attribute_name(:transport_conditions) %></th>
+      <th colspan="2">Observações</th>
     </tr>
     <tr>
-      <td>Observação</td>
-      <td><%= hospitalization.obs %></td>
+      <td colspan="2"><%= hospitalization.transport_conditions %></td>
+      <td colspan="2"><%= hospitalization.obs %></td>
     </tr>
 
   </table>

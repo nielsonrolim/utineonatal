@@ -249,6 +249,7 @@ pt-BR:
         gestational_age: Idade Gestacional
       hospitalization:
         checkin: Data de Entrada
+        checkout: Data de Saída
         origin: Procedência
         transport_conditions: Condições de Transporte
         reason: Motivo
