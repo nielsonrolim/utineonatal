@@ -40,6 +40,9 @@
               <% else %>
                   <%= link_to 'Nova Internação', new_hospitalization_path(bed), :class => 'btn btn-primary', :role => 'button' %>
               <% end %>
+              <% unless bed.hospitalizations.empty? %>
+                  <%= link_to('Histórico', bed_history_path(bed), :class => 'btn btn-default') %>
+              <% end %>
             </p>
           </div>
         </div>

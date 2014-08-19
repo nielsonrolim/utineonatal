@@ -2,10 +2,6 @@
   <h1>Detalhes da Visita</h1>
 </div>
 
-<%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
-    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
-<% end %>
-
 <%= link_to(visit_details_pdf_path(@visit.id), :target => '_blank', :class => 'btn btn-default') do %>
     <span class="glyphicon glyphicon-print"></span> Imprimir
 <% end %>
@@ -18,6 +14,6 @@
 
 <%= render 'visits/data', visit: @visit %>
 
-<%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
-    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
+<%= link_to(visit_details_pdf_path(@visit.id), :target => '_blank', :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-print"></span> Imprimir
 <% end %>

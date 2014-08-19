@@ -1,6 +1,6 @@
 class BedsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_admin!, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :authorize_admin!, only: [:show, :new, :edit, :create, :update, :destroy]
   before_action :set_bed, only: [:show, :edit, :update, :destroy]
 
   def list

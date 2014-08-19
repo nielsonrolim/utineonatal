@@ -128,8 +128,10 @@ class VisitsController < ApplicationController
           @visit.interventions << intervention
         end
 
-        clear_visit
       end
+      clear_visit
+      flash[:notice] = 'Visita finalizada com sucesso!'
+      redirect_to visit_details_path(@visit.id)
     end
   end
 

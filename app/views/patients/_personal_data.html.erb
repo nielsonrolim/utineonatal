@@ -1,9 +1,9 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Dados do Paciente</h3>
   </div>
 
-  <table class="table hidden-xs">
+  <table class="table table-striped hidden-xs">
     <tr>
       <th><%= Patient.human_attribute_name(:name) %></th>
       <th><%= Patient.human_attribute_name(:medical_record_number) %></th>
@@ -18,7 +18,7 @@
     </tr>
   </table>
 
-  <table class="table visible-xs-block hidden-sm hidden-md hidden-lg">
+  <table class="table table-striped visible-xs-block hidden-sm hidden-md hidden-lg">
     <tr>
       <td>Nome</td>
       <td><%= patient.name %></td>

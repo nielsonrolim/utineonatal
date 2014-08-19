@@ -19,10 +19,14 @@
   </table>
 
 
-  <table class="table visible-xs-block hidden-sm hidden-md hidden-lg">
+  <table class="table table-striped visible-xs-block hidden-sm hidden-md hidden-lg">
     <tr>
       <td>Leito</td>
       <td><%= hospitalization.bed.id %></td>
+    </tr>
+    <tr>
+      <td>Visitas Realizadas</td>
+      <td><%= hospitalization.visits.count %></td>
     </tr>
     <tr>
       <td>Data de Entrada</td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817224659) do
+ActiveRecord::Schema.define(version: 20140819122646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 20140817224659) do
     t.integer  "respiratory_rate"
     t.integer  "blood_pressure_min"
     t.integer  "blood_pressure_max"
-    t.decimal  "pulse",                 precision: 2, scale: 0
+    t.integer  "pulse"
     t.decimal  "temperature",           precision: 2, scale: 0
   end
 

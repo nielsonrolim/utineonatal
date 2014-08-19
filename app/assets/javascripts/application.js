@@ -15,3 +15,18 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+
+
+(function () {
+    var application_ready;
+
+    application_ready = function () {
+
+
+    };
+    $(document).ready(application_ready);
+    $(document).on('page:load', application_ready);
+
+
+}).call(this);

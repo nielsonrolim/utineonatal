@@ -3,8 +3,8 @@
   <h1>Histórico de Visitas por Leito</h1>
   <h3>Leito <%= @bed.id %></h3>
 </div>
-<%= link_to(beds_path, :class => 'btn btn-default') do %>
-    <span class="glyphicon glyphicon-chevron-left"></span> Cadastro de Leitos
+<%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
 <% end %>
 <br /><br />
 <table class="table table-striped">
@@ -33,6 +33,6 @@
   </tbody>
 </table>
 
-<%= link_to(beds_path, :class => 'btn btn-default') do %>
-    <span class="glyphicon glyphicon-chevron-left"></span> Cadastro de Leitos
+<%= link_to('javascript:history.back()', :class => 'btn btn-default') do %>
+    <span class="glyphicon glyphicon-chevron-left"></span> Voltar
 <% end %>

@@ -31,13 +31,14 @@ Rails.application.routes.draw do
   get 'visit/new/:bed_id' => 'visits#new', as: :visit_new
   get 'visit/physical_examination/:bed_id' => 'visits#physical_examination', as: :physical_examination
   get 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators
-  get 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses_get
+  post 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators_post
   get 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions_get
   get 'cancel_visit/' => 'visits#cancel_visit', as: :cancel_visit
-  post 'visit/indicators/:bed_id' => 'visits#indicators', as: :visit_indicators_post
   post 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses
+  get 'visit/diagnoses/:bed_id' => 'visits#diagnoses', as: :visit_diagnoses_get
   post 'visit/interventions/:bed_id' => 'visits#interventions', as: :visit_interventions
   post 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish
+  get 'visit/finish/:bed_id' => 'visits#finish', as: :visit_finish_get
   post 'patient_search' => 'patients#search', as: :patient_search
   get 'patient_search/:page' => 'patients#search', as: :patient_search_paginate
 
