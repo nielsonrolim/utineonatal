@@ -14,6 +14,25 @@
  *= require_self
  */
 
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
 .conteudo_painel {
   padding: 0px 25px;
 }
@@ -43,7 +62,6 @@ footer {
   }
 }
 
-
 .table {
   .acoes {
     a {
@@ -52,5 +70,18 @@ footer {
       margin-top: 2px;
       margin-bottom: 2px;
     }
+  }
+}
+
+
+@media (max-width: 768px) {
+  #bg {
+    left: -70%;
+  }
+}
+
+@media (max-width: 568px) {
+  #bg {
+    display: none;
   }
 }
