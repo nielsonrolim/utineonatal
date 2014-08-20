@@ -65,7 +65,7 @@
   <br/>
 
   <% visit.indicators.each do |indicator| %>
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6">
         <div class="thumbnail">
           <h4><%= indicator.indicator_category.name %>: <%= indicator.name %></h4>
           <% if indicator.has_obs_for_visit?(visit.id) %>
@@ -86,7 +86,7 @@
   </div>
   <br/>
   <% visit.diagnoses.order('name').each do |diagnosis| %>
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6">
         <div class="thumbnail">
           <h4><%= diagnosis.name %></h4>
         </div>
@@ -100,7 +100,7 @@
   </div>
   <br/>
   <% visit.interventions.order('name').each do |intervention| %>
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6">
         <div class="thumbnail">
           <h4><%= intervention.name %></h4>
         </div>
