@@ -23,13 +23,13 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th class="col-xs-1 col-lg-1"><%= model_class.human_attribute_name(:id) %></th>
-    <th class="col-xs-6 col-lg-3"><%= model_class.human_attribute_name(:name) %></th>
-    <th class="col-xs-5 col-lg-2"><%= model_class.human_attribute_name(:medical_record_number) %></th>
-    <th class="hidden-xs col-lg-2"><%= model_class.human_attribute_name(:birthdate) %></th>
-    <th class="hidden-xs col-lg-2"><%= model_class.human_attribute_name(:sex) %></th>
-    <th class="hidden-xs col-lg-1">Leito</th>
-    <th class="acoes col-xs-2 col-lg-2"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-xs-1 col-md-1"><%= model_class.human_attribute_name(:id) %></th>
+    <th class="col-xs-6 col-md-3"><%= model_class.human_attribute_name(:name) %></th>
+    <th class="col-xs-5 col-md-2"><%= model_class.human_attribute_name(:medical_record_number) %></th>
+    <th class="hidden-xs col-md-2"><%= model_class.human_attribute_name(:birthdate) %></th>
+    <th class="hidden-xs col-md-2"><%= model_class.human_attribute_name(:sex) %></th>
+    <th class="hidden-xs col-md-1">Leito</th>
+    <th class="acoes col-xs-2 col-md-2"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
@@ -42,22 +42,22 @@
         <td class="hidden-xs"><%= patient.sex %></td>
         <td class="hidden-xs">
           <% if patient.current_bed %>
-              <%= link_to('Visitar', physical_examination_path(patient.current_bed.number), :class => 'btn btn-default btn-xs') %>
+              <%= link_to('Visitar', physical_examination_path(patient.current_bed.number), :class => 'btn btn-default ') %>
           <% else %>
               -
           <% end %>
         </td>
         <td class="acoes">
           <% unless patient.hospitalizations.empty? %>
-              <%= link_to('Histórico', hospitalizations_path(patient), :class => 'btn btn-default btn-xs') %>
+              <%= link_to('Histórico', hospitalizations_path(patient), :class => 'btn btn-default ') %>
           <% end %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_patient_path(patient), :class => 'btn btn-default btn-xs' %>
+                      edit_patient_path(patient), :class => 'btn btn-default ' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       patient_path(patient),
                       :method => :delete,
                       :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                      :class => 'btn btn-xs btn-danger' %>
+                      :class => 'btn  btn-danger' %>
         </td>
       </tr>
   <% end %>

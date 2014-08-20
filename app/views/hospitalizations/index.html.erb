@@ -13,11 +13,11 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th class="col-lg-1">Cód.</th>
-    <th class="col-lg-2">Leito</th>
-    <th class="col-lg-4">Data da Entrada</th>
-    <th class="col-lg-4">Data da Saída</th>
-    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
+    <th class="col-xs-1">Cód.</th>
+    <th class="col-xs-10 col-md-2">Leito</th>
+    <th class="col-md-4 hidden-xs">Data da Entrada</th>
+    <th class="col-md-4 hidden-xs">Data da Saída</th>
+    <th class="acoes col-xs-1"><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
   <tbody>
@@ -25,11 +25,11 @@
       <tr>
         <td><%= link_to hospitalization.id, hospitalization_path(hospitalization) %></td>
         <td><%= hospitalization.bed.id %></td>
-        <td><%= hospitalization.checkin.strftime("%d/%m/%Y - %H:%M") %></td>
-        <td><%= (hospitalization.checkout.nil?) ? '-' : hospitalization.checkout.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td class="hidden-xs"><%= hospitalization.checkin.strftime("%d/%m/%Y - %H:%M") %></td>
+        <td class="hidden-xs"><%= (hospitalization.checkout.nil?) ? '-' : hospitalization.checkout.strftime("%d/%m/%Y - %H:%M") %></td>
         <td class="acoes">
-          <%= link_to('Histórico de Visitas', patient_visit_history_path(hospitalization.patient), :class => 'btn btn-default btn-xs') %>
-          <%= link_to('Detalhes', hospitalization_path(hospitalization), :class => 'btn btn-default btn-xs') %>
+          <%= link_to('Histórico de Visitas', patient_visit_history_path(hospitalization.patient), :class => 'btn btn-default ') %>
+          <%= link_to('Detalhes', hospitalization_path(hospitalization), :class => 'btn btn-default ') %>
         </td>
       </tr>
   <% end %>

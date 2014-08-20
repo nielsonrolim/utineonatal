@@ -1,5 +1,5 @@
 class VisitsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:details]
   before_action :set_current_hospitalization, only: [:physical_examination, :indicators, :diagnoses, :interventions, :finish]
 
   def bed_history
@@ -47,6 +47,9 @@ class VisitsController < ApplicationController
   end
 
   def indicators
+    unless session[:visit_params].nil?
+      params[:visit] = session[:visit_params]
+    end
     unless params[:visit].nil?
       @visit = Visit.new(visit_params)
     else

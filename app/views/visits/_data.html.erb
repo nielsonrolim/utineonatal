@@ -3,134 +3,107 @@
     <h3 class="panel-title">Dados da Visita</h3>
   </div>
 
-  <!-- Table -->
   <table class="table table-striped">
     <tr>
-      <th>Cód.</th>
+      <th class="">Cód.</th>
       <th>Data da Visita</th>
       <th>Responsável</th>
     </tr>
     <tr>
-      <td><%= visit.id %></td>
+      <td class=""><%= visit.id %></td>
       <td><%= visit.datahora.strftime("%d/%m/%Y") %></td>
       <td><%= visit.user.name %></td>
     </tr>
-
+    <tr>
+      <th><%= Visit.human_attribute_name(:head_circumference) %></th>
+      <th><%= Visit.human_attribute_name(:thoracic_perimeter) %></th>
+      <th><%= Visit.human_attribute_name(:waist_circumference) %></th>
+    </tr>
+    <tr>
+      <td><%= visit.head_circumference %></td>
+      <td><%= visit.thoracic_perimeter %></td>
+      <td><%= visit.waist_circumference %></td>
+    </tr>
+    <tr>
+      <th><%= Visit.human_attribute_name(:weight) %></th>
+      <th><%= Visit.human_attribute_name(:stature) %></th>
+      <th><%= Visit.human_attribute_name(:pulse) %></th>
+    </tr>
+    <tr>
+      <td><%= visit.weight %></td>
+      <td><%= visit.stature %></td>
+      <td><%= visit.pulse %></td>
+    </tr>
+    <tr>
+      <th><%= Visit.human_attribute_name(:temperature) %></th>
+      <th><%= Visit.human_attribute_name(:incubator_temperature) %></th>
+      <th><%= Visit.human_attribute_name(:heart_rate) %></th>
+    </tr>
+    <tr>
+      <td><%= visit.temperature %></td>
+      <td><%= visit.incubator_temperature %></td>
+      <td><%= visit.heart_rate %></td>
+    </tr>
+    <tr>
+      <th><%= Visit.human_attribute_name(:respiratory_rate) %></th>
+      <th><%= Visit.human_attribute_name(:blood_pressure_min) %></th>
+      <th><%= Visit.human_attribute_name(:blood_pressure_max) %></th>
+    </tr>
+    <tr>
+      <td><%= visit.respiratory_rate %></td>
+      <td><%= visit.blood_pressure_min %></td>
+      <td><%= visit.blood_pressure_max %></td>
+    </tr>
   </table>
-
-  <div class="panel-body">
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Dados Antropométricos</div>
-
-      <!-- Table -->
-      <table class="table">
-        <!-- Table -->
-        <table class="table table-striped">
-          <tr>
-            <th><%= Visit.human_attribute_name(:head_circumference) %></th>
-            <th><%= Visit.human_attribute_name(:thoracic_perimeter) %></th>
-            <th><%= Visit.human_attribute_name(:waist_circumference) %></th>
-          </tr>
-          <tr>
-            <td><%= visit.head_circumference %></td>
-            <td><%= visit.thoracic_perimeter %></td>
-            <td><%= visit.waist_circumference %></td>
-          </tr>
-          <tr>
-            <th><%= Visit.human_attribute_name(:weight) %></th>
-            <th colspan="2"><%= Visit.human_attribute_name(:stature) %></th>
-          </tr>
-          <tr>
-            <td><%= visit.weight %></td>
-            <td colspan="2"><%= visit.stature %></td>
-          </tr>
-        </table>
-      </table>
-    </div>
-  </div>
-
-  <div class="panel-body">
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Sinais Vitais</div>
-
-      <!-- Table -->
-      <table class="table table-striped">
-        <tr>
-          <th><%= Visit.human_attribute_name(:temperature) %></th>
-          <th><%= Visit.human_attribute_name(:incubator_temperature) %></th>
-          <th><%= Visit.human_attribute_name(:heart_rate) %></th>
-        </tr>
-        <tr>
-          <td><%= visit.temperature %></td>
-          <td><%= visit.incubator_temperature %></td>
-          <td><%= visit.heart_rate %></td>
-        </tr>
-        <tr>
-          <th><%= Visit.human_attribute_name(:respiratory_rate) %></th>
-          <th><%= Visit.human_attribute_name(:blood_pressure_min) %></th>
-          <th><%= Visit.human_attribute_name(:blood_pressure_max) %></th>
-        </tr>
-        <tr>
-          <td><%= visit.respiratory_rate %></td>
-          <td><%= visit.blood_pressure_min %></td>
-          <td><%= visit.blood_pressure_max %></td>
-        </tr>
-        <tr>
-          <th colspan="3"><%= Visit.human_attribute_name(:pulse) %></th>
-        </tr>
-        <tr>
-          <td colspan="3"><%= visit.pulse %></td>
-        </tr>
-      </table>
-
-    </div>
-  </div>
 </div>
 
-<div class="panel panel-info">
+
+<div class="panel panel-info clearfix">
   <div class="panel-heading">
     <h3 class="panel-title">Indicadores Identificados</h3>
   </div>
+  <br/>
 
-  <ul class="list-group">
-    <% visit.indicators.each do |indicator| %>
-        <li class="list-group-item">
+  <% visit.indicators.each do |indicator| %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="thumbnail">
           <h4><%= indicator.indicator_category.name %>: <%= indicator.name %></h4>
           <% if indicator.has_obs_for_visit?(visit.id) %>
               <div>
-                <%= indicator.obs_description %> <%= indicator.obs(visit.id) %>
+                <%= (indicator.obs_description.empty?) ? 'Obs.:' : indicator.obs_description %> <%= indicator.obs(visit.id) %>
               </div>
           <% end %>
-        </li>
-    <% end %>
-  </ul>
+
+        </div>
+      </div>
+  <% end %>
 </div>
 
 
-<div class="panel panel-info">
+<div class="panel panel-info clearfix">
   <div class="panel-heading">
     <h3 class="panel-title">Diagnósticos Realizados</h3>
   </div>
-  <ul class="list-group">
-    <% visit.diagnoses.order('name').each do |diagnosis| %>
-        <li class="list-group-item">
+  <br/>
+  <% visit.diagnoses.order('name').each do |diagnosis| %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="thumbnail">
           <h4><%= diagnosis.name %></h4>
-        </li>
-    <% end %>
-  </ul>
+        </div>
+      </div>
+  <% end %>
 </div>
 
-<div class="panel panel-info">
+<div class="panel panel-info clearfix">
   <div class="panel-heading">
     <h3 class="panel-title">Intervenções Realizadas</h3>
   </div>
-  <ul class="list-group">
-    <% visit.interventions.order('name').each do |intervention| %>
-        <li class="list-group-item">
+  <br/>
+  <% visit.interventions.order('name').each do |intervention| %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="thumbnail">
           <h4><%= intervention.name %></h4>
-        </li>
-    <% end %>
-  </ul>
+        </div>
+      </div>
+  <% end %>
 </div>

@@ -254,17 +254,17 @@ pt-BR:
         transport_conditions: Condições de Transporte
         reason: Motivo
       visit:
-        head_circumference: Perímetro Cefálico
-        thoracic_perimeter: Perímetro Torácico
-        waist_circumference: Perímetro Abdominal
-        weight: Peso
-        stature: Estatura
-        incubator_temperature: Temperatura da Incubadora
-        heart_rate: Frequência Cardíaca
-        respiratory_rate: Frequência Respiratória
+        head_circumference: Perímetro Cefálico (cm)
+        thoracic_perimeter: Perímetro Torácico (cm)
+        waist_circumference: Perímetro Abdominal (cm)
+        weight: Peso (kg)
+        stature: Estatura (cm)
+        incubator_temperature: Temperatura da Incubadora (°C)
+        heart_rate: Frequência Cardíaca (bpm)
+        respiratory_rate: Frequência Respiratória (rpm)
         blood_pressure_min: Pressão Arterial Min.
         blood_pressure_max: Pressão Arterial Max.
-        pulse: Pulso
-        temperature: Temperatura
+        pulse: Pulso (bpm)
+        temperature: Temperatura (°C)
     errors:
       <<: *errors

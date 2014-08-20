@@ -23,11 +23,11 @@
                 <table class="table table-striped">
                   <thead>
                   <tr>
-                    <th class="col-lg-1"><%= model_class.human_attribute_name(:id) %></th>
-                    <th class="col-lg-4">Indicador</th>
-                    <th class="col-lg-2"><%= model_class.human_attribute_name(:has_obs) %></th>
-                    <th class="col-lg-4"><%= model_class.human_attribute_name(:obs_description) %></th>
-                    <th class="acoes col-lg-1"><%= t '.actions', :default => t("helpers.actions") %></th>
+                    <th class="col-xs-1 col-md-1"><%= model_class.human_attribute_name(:id) %></th>
+                    <th class="col-xs-10 col-md-4">Indicador</th>
+                    <th class="col-md-2 hidden-xs hidden-sm"><%= model_class.human_attribute_name(:has_obs) %></th>
+                    <th class="col-md-4 hidden-xs hidden-sm"><%= model_class.human_attribute_name(:obs_description) %></th>
+                    <th class="acoes col-xs-1 col-md-1"><%= t '.actions', :default => t("helpers.actions") %></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -35,16 +35,16 @@
                       <tr>
                         <td><%= link_to indicator.id, indicator_path(indicator) %></td>
                         <td><%= indicator.name %></td>
-                        <td><%= (indicator.has_obs) ? 'Sim' : 'Não' %></td>
-                        <td><%= indicator.obs_description %></td>
+                        <td class="hidden-xs hidden-sm"><%= (indicator.has_obs) ? 'Sim' : 'Não' %></td>
+                        <td class="hidden-xs hidden-sm"><%= indicator.obs_description %></td>
                         <td class="acoes">
                           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                                      edit_indicator_path(indicator), :class => 'btn btn-default btn-xs' %>
+                                      edit_indicator_path(indicator), :class => 'btn btn-default ' %>
                           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                                       indicator_path(indicator),
                                       :method => :delete,
                                       :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                                      :class => 'btn btn-xs btn-danger' %>
+                                      :class => 'btn  btn-danger' %>
                         </td>
                       </tr>
                   <% end %>
@@ -86,12 +86,12 @@
             <td><%= indicator.obs_description %></td>
             <td class="acoes">
               <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          edit_indicator_path(indicator), :class => 'btn btn-default btn-xs' %>
+                          edit_indicator_path(indicator), :class => 'btn btn-default ' %>
               <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                           indicator_path(indicator),
                           :method => :delete,
                           :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
-                          :class => 'btn btn-xs btn-danger' %>
+                          :class => 'btn  btn-danger' %>
             </td>
           </tr>
       <% end %>
