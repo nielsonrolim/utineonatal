@@ -20,7 +20,8 @@ body {
 }
 
 .footer p {
-    color: silver;
+    color: #666666;
+    text-shadow: 1px 1px white;
     font-size: 90%;
 }
 
