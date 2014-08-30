@@ -30,7 +30,7 @@ class InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.save
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully created.' }
+        format.html { redirect_to interventions_url, notice: 'Intervention was successfully created.' }
         format.json { render :show, status: :created, location: @intervention }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class InterventionsController < ApplicationController
   def update
     respond_to do |format|
       if @intervention.update(intervention_params)
-        format.html { redirect_to @intervention, notice: 'Intervention was successfully updated.' }
+        format.html { redirect_to interventions_url, notice: 'Intervention was successfully updated.' }
         format.json { render :show, status: :ok, location: @intervention }
       else
         format.html { render :edit }

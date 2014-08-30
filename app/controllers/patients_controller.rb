@@ -45,7 +45,7 @@ class PatientsController < ApplicationController
       if @patient.save
         format.html do
           if bed_id.nil?
-            redirect_to @patient, notice: 'Paciente criado com sucesso.'
+            redirect_to patients_url, notice: 'Paciente criado com sucesso.'
           else
             redirect_to beds_create_hospitalization_path(bed_id, @patient.id)
           end
@@ -63,7 +63,7 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Paciente atualizado com sucesso.' }
+        format.html { redirect_to patients_url, notice: 'Paciente atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }

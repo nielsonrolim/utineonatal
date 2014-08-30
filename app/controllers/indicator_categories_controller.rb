@@ -32,7 +32,7 @@ class IndicatorCategoriesController < ApplicationController
 
     respond_to do |format|
       if @indicator_category.save
-        format.html { redirect_to @indicator_category, notice: 'Categoria do Indicador foi criada com sucesso.' }
+        format.html { redirect_to indicator_categories_url, notice: 'Categoria do Indicador foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @indicator_category }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class IndicatorCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @indicator_category.update(indicator_category_params)
-        format.html { redirect_to @indicator_category, notice: 'Categoria do Indicador foi atualizada com sucesso.' }
+        format.html { redirect_to indicator_categories_url, notice: 'Categoria do Indicador foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @indicator_category }
       else
         format.html { render :edit }

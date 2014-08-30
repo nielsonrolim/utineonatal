@@ -40,7 +40,7 @@ class DiagnosesController < ApplicationController
             @diagnosis.interventions << interventions
           end
         end
-        format.html { redirect_to @diagnosis, notice: 'Diagnosis was successfully created.' }
+        format.html { redirect_to diagnoses_url, notice: 'Diagnosis was successfully created.' }
         format.json { render :show, status: :created, location: @diagnosis }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ class DiagnosesController < ApplicationController
             @diagnosis.interventions << interventions
           end
         end
-        format.html { redirect_to @diagnosis, notice: 'Diagnosis was successfully updated.' }
+        format.html { redirect_to diagnoses_url, notice: 'Diagnosis was successfully updated.' }
         format.json { render :show, status: :ok, location: @diagnosis }
       else
         format.html { render :edit }

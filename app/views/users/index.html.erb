@@ -1,0 +1,48 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_path,
+            :class => 'btn btn-primary' %>
+
+<br /><br />
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="col-xs-1"><%= model_class.human_attribute_name(:id) %></th>
+    <th class="col-sm-4 hidden-xs"><%= model_class.human_attribute_name(:name) %></th>
+    <th class="col-xs-8 col-sm-3"><%= model_class.human_attribute_name(:username) %></th>
+    <th class="col-sm-3 hidden-xs"><%= model_class.human_attribute_name(:email) %></th>
+    <th class="col-xs-2 col-sm-3"><%= model_class.human_attribute_name(:is_admin) %></th>
+    <th class="acoes col-xs-1"><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, diagnosis_path(user) %></td>
+        <td class="hidden-xs"><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td class="hidden-xs"><%= user.email %></td>
+        <td><%= (user.is_admin?) ? 'Sim' : 'Não' %></td>
+        <td class="acoes">
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_path(user), :class => 'btn btn-default ' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      user,
+                      :method => :delete,
+                      :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
+                      :class => 'btn  btn-danger' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_path,
+            :class => 'btn btn-primary' %>

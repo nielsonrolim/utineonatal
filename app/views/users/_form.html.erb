@@ -1,0 +1,19 @@
+<%= simple_form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Dados do Usuário</div>
+      <div class="panel-body conteudo_painel">
+        <%= f.input :name %>
+        <%= f.input :username %>
+        <%= f.input :email %>
+        <%= f.input :cpf %>
+        <%= f.input :password %>
+        <%= f.input :is_admin %>
+      </div>
+    </div>
+
+    <br/>
+
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn btn-default' %>
+<% end %>

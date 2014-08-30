@@ -217,6 +217,7 @@ pt-BR:
       patient: Paciente
       hospitalization: Internação
       visit: Visita
+      user: Usuário
     attributes:
       indicator_category:
         id: Cód
@@ -266,5 +267,13 @@ pt-BR:
         blood_pressure_max: Pressão Arterial Max.
         pulse: Pulso (bpm)
         temperature: Temperatura (°C)
+      user:
+        id: Cód.
+        name: Nome
+        username: Login
+        email: E-mail
+        cpf: CPF
+        password: Senha
+        is_admin: Admin?
     errors:
       <<: *errors

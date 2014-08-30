@@ -45,7 +45,7 @@ class IndicatorsController < ApplicationController
             @indicator.diagnoses << diagnosis
           end
         end
-        format.html { redirect_to @indicator, notice: 'Indicador foi adicionado com sucesso.' }
+        format.html { redirect_to indicators_url, notice: 'Indicador foi adicionado com sucesso.' }
         format.json { render :show, status: :created, location: @indicator }
       else
         format.html { render :new }
@@ -70,7 +70,7 @@ class IndicatorsController < ApplicationController
             @indicator.diagnoses << diagnosis
           end
         end
-        format.html { redirect_to @indicator, notice: 'Indicador foi apagado com sucesso.' }
+        format.html { redirect_to indicators_url, notice: 'Indicador foi apagado com sucesso.' }
         format.json { render :show, status: :ok, location: @indicator }
       else
         format.html { render :edit }

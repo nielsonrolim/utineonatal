@@ -56,6 +56,8 @@ Rails.application.routes.draw do
 
   resources :patients
 
+  resources :users
+
   # Example resource route with options:
   #   resources :products do
   #     member do
