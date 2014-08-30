@@ -263,8 +263,8 @@ pt-BR:
         incubator_temperature: Temperatura da Incubadora (°C)
         heart_rate: Frequência Cardíaca (bpm)
         respiratory_rate: Frequência Respiratória (rpm)
-        blood_pressure_min: Pressão Arterial Min.
-        blood_pressure_max: Pressão Arterial Max.
+        blood_pressure_min: Pressão Arterial Min. (mmHg)
+        blood_pressure_max: Pressão Arterial Max. (mmHg)
         pulse: Pulso (bpm)
         temperature: Temperatura (°C)
       user:

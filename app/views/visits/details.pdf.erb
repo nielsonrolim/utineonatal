@@ -6,3 +6,12 @@
 
 <%= render 'visits/data', visit: @visit %>
 
+<br />
+<br />
+
+
+<div class="text-center">
+  <p>João Pessoa, <%= Time.now.strftime("%d/%m/%Y") %></p>
+  <p>__________________________________________________</p>
+  <p><%= @visit.user.name %></p>
+</div>
