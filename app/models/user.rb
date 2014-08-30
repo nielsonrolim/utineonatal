@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
 
   has_many :visits
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable, :validatable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   validates :username, :uniqueness => {:case_sensitive => false}
 
