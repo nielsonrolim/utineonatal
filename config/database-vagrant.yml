@@ -21,8 +21,8 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   username: postgres
-  password: ppk222
-  host: 10.0.2.2
+  password: 
+  #host: 10.0.2.2
 
 development:
   <<: *default
@@ -86,6 +86,6 @@ production:
   database: utineonatal_production
   username: utineonatal
 #  password: <%= ENV['UTINEONATAL_DATABASE_PASSWORD'] %>
-  password: ppk222!
+  password: 
   port: 5433
   host: localhost
