@@ -38,8 +38,8 @@
         <%= f.input :pulse, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
         <%= f.input :heart_rate, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
         <%= f.input :respiratory_rate, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
-        <%= f.input :blood_pressure_min, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
         <%= f.input :blood_pressure_max, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
+        <%= f.input :blood_pressure_min, :input_html => {:type => 'text', :'data-mask' => '99?9' } %>
 
         <%= hidden_field_tag :bed_id, @bed.id %>
 

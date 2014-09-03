@@ -47,7 +47,7 @@ class PatientsController < ApplicationController
           if bed_id.nil?
             redirect_to patients_url, notice: 'Paciente criado com sucesso.'
           else
-            redirect_to beds_create_hospitalization_path(bed_id, @patient.id)
+            redirect_to new_hospitalization_additional_path(bed_id, @patient.id)
           end
         end
         format.json { render :show, status: :created, location: @patient }
