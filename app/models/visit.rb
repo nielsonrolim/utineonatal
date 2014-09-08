@@ -8,5 +8,5 @@ class Visit < ActiveRecord::Base
 
   self.per_page = 30
 
-  validates_presence_of :temperature, :incubator_temperature, :pulse, :heart_rate, :respiratory_rate, :blood_pressure_max, :blood_pressure_min
+  validates_presence_of :temperature, :incubator_temperature, :pulse, :heart_rate, :respiratory_rate
 end

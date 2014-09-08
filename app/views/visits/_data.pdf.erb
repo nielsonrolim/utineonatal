@@ -59,14 +59,14 @@
 
 <div class="panel panel-info clearfix indicators">
   <div class="panel-heading">
-    <h3 class="panel-title">Indicadores Identificados</h3>
+    <h3 class="panel-title">Indicadores</h3>
   </div>
   <br/>
 
   <% visit.indicators.each do |indicator| %>
       <div class="col-xs-6">
         <div class="thumbnail">
-          <h4><%= indicator.indicator_category.name %>: <%= indicator.name %></h4>
+          <div><%= indicator.indicator_category.name %>: <%= indicator.name %></div>
           <% if indicator.has_obs_for_visit?(visit.id) %>
               <div>
                 <%= (indicator.obs_description.empty?) ? 'Obs.:' : indicator.obs_description %> <%= indicator.obs(visit.id) %>
@@ -79,13 +79,13 @@
 
 <div class="panel panel-info clearfix diagnoses">
   <div class="panel-heading">
-    <h3 class="panel-title">Diagnósticos Realizados</h3>
+    <h3 class="panel-title">Diagnósticos</h3>
   </div>
   <br/>
   <% visit.diagnoses.order('name').each do |diagnosis| %>
       <div class="col-xs-6">
         <div class="thumbnail">
-          <h4><%= diagnosis.name %></h4>
+          <div><%= diagnosis.name %></div>
         </div>
       </div>
   <% end %>
@@ -93,13 +93,13 @@
 
 <div class="panel panel-info clearfix interventions">
   <div class="panel-heading">
-    <h3 class="panel-title">Intervenções Realizadas</h3>
+    <h3 class="panel-title">Intervenções</h3>
   </div>
   <br/>
   <% visit.interventions.order('name').each do |intervention| %>
       <div class="col-xs-6">
         <div class="thumbnail">
-          <h4><%= intervention.name %></h4>
+          <div><%= intervention.name %></div>
         </div>
       </div>
   <% end %>

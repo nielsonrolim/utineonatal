@@ -20,20 +20,35 @@ th {
 }
 
 #pdf_header {
-    text-align: center;
-    margin-bottom: 20px;
+    width: 300px;
+    margin: auto;
 }
+
 #pdf_header img {
+    float: left;
+    padding-right: 20px;
+    margin-bottom: 5px;
 }
 
-#pdf_header h3 {
- text-align: center;
+.indicators, .diagnoses, .interventions {
+    page-break-before: auto;
 }
 
-.indicators {
-    page-break-before: always;
+.panel {
+    clear: both;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td, .table tbody>tr>td, .table tfoot>tr>td {
+    padding: 3px;
+}
+
+.panel .panel-heading {
+    padding: 3px 10px;
 }
 
 .panel .thumbnail {
     margin-bottom: 10px;
+    padding: 2px;
 }

@@ -258,7 +258,7 @@ pt-BR:
         head_circumference: Perímetro Cefálico (cm)
         thoracic_perimeter: Perímetro Torácico (cm)
         waist_circumference: Perímetro Abdominal (cm)
-        weight: Peso (kg)
+        weight: Peso (g)
         stature: Estatura (cm)
         incubator_temperature: Temperatura da Incubadora (°C)
         heart_rate: Frequência Cardíaca (bpm)
