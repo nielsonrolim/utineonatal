@@ -75,6 +75,12 @@ class VisitsController < ApplicationController
 
   def diagnoses
     indicators = params[:indicators] || session[:indicators]
+
+    indicators_radio = params[:indicators_radio]
+    indicators_radio.each do |category_id, id|
+      indicators.push id
+    end
+
     if indicators.nil?
       flash[:error] = 'Por favor, selecione pelo menos um indicador.'
       redirect_to visit_indicators_path(@hospitalization.bed_id)

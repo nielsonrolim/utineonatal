@@ -27,7 +27,7 @@
                                 <% unless indicator.indicator_category.exclusive_options %>
                                     <%= check_box_tag 'indicators[]', indicator.id, @indicators_ids.include?(indicator.id) %> <%= indicator.name %>
                                 <% else %>
-                                    <%= radio_button_tag 'indicators[]', indicator.id, @indicators_ids.include?(indicator.id) %> <%= indicator.name %>
+                                    <%= radio_button_tag "indicators_radio[#{category.id}]", indicator.id, @indicators_ids.include?(indicator.id) %> <%= indicator.name %>
                                 <% end %>
 
                               </label>
