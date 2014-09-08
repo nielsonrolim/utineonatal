@@ -66,12 +66,13 @@
   <% visit.indicators.each do |indicator| %>
       <div class="col-xs-6">
         <div class="thumbnail">
-          <div><%= indicator.indicator_category.name %>: <%= indicator.name %></div>
+          <div><%= indicator.indicator_category.name %>: <%= indicator.name %>
           <% if indicator.has_obs_for_visit?(visit.id) %>
-              <div>
+              <span>
                 <%= (indicator.obs_description.empty?) ? 'Obs.:' : indicator.obs_description %> <%= indicator.obs(visit.id) %>
-              </div>
+              </span>
           <% end %>
+          </div>
         </div>
       </div>
   <% end %>
