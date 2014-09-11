@@ -22,8 +22,8 @@
       <tr>
         <td><%= link_to visit.id, "#" %></td>
         <td><%= visit.datahora.strftime("%d/%m/%Y - %H:%M") %></td>
-        <td><%= visit.hospitalization.patient.name %></td>
-        <td class="hidden-xs"><%= visit.user.name %></td>
+        <td><%= (visit.hospitalization.patient.nil?) ? "Paciente apagado" : visit.hospitalization.patient.name %></td>
+        <td class="hidden-xs"><%= (visit.user.nil?) ? "Usuário apagado" : visit.user.name %></td>
         <td class="acoes">
           <%= link_to('Detalhes', visit_details_path(visit), :class => 'btn btn-default ') %>
           <%= link_to('Imprimir', visit_details_pdf_path(visit), :target => '_blank', :class => 'btn btn-default ') %>
