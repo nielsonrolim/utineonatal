@@ -16,7 +16,7 @@
       </div>
       <div class="panel-body">
 
-        <% main_category.children.order(:name).each do |category| %>
+        <% main_category.children_ordered_by_name.each do |category| %>
             <div class="panel panel-default">
               <div class="panel-heading"><%= category.name %></div>
               <div class="panel-body">

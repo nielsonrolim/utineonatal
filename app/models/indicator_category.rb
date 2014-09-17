@@ -4,7 +4,7 @@ class IndicatorCategory < ActiveRecord::Base
   has_many :children, :class_name => 'IndicatorCategory', :foreign_key => 'parent_id'
 
   validates_presence_of :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, scope: :parent_id
 
   def self.main_categories
     self.where('parent_id is NULL').order('name')
@@ -16,7 +16,7 @@ class IndicatorCategory < ActiveRecord::Base
 
   def children_ordered_by_name
     children = self.children.order(:name).to_a
-    category_named_other = children.select {|c| c.name.downcase.include? 'outros'}.first
+    category_named_other = children.select {|c| c.name =~ /outros|outras/i}.first
     unless category_named_other.nil?
       children.delete_if {|c| c.id == category_named_other.id}
       children.push category_named_other
