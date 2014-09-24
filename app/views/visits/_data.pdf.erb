@@ -6,51 +6,53 @@
   <table class="table table-striped">
     <tr>
       <th class="">Cód.</th>
+      <th>Tempo da Visita</th>
       <th>Data da Visita</th>
       <th>Responsável</th>
     </tr>
     <tr>
       <td class=""><%= visit.id %></td>
+      <td><%= (@visit_time_string) ? @visit_time_string : '-' %>
       <td><%= visit.datahora.strftime("%d/%m/%Y") %></td>
       <td><%= visit.user.name %></td>
     </tr>
     <tr>
-      <th><%= Visit.human_attribute_name(:head_circumference) %></th>
+      <th colspan="2"><%= Visit.human_attribute_name(:head_circumference) %></th>
       <th><%= Visit.human_attribute_name(:thoracic_perimeter) %></th>
       <th><%= Visit.human_attribute_name(:waist_circumference) %></th>
     </tr>
     <tr>
-      <td><%= visit.head_circumference %></td>
+      <td colspan="2"><%= visit.head_circumference %></td>
       <td><%= visit.thoracic_perimeter %></td>
       <td><%= visit.waist_circumference %></td>
     </tr>
     <tr>
-      <th><%= Visit.human_attribute_name(:weight) %></th>
+      <th colspan="2"><%= Visit.human_attribute_name(:weight) %></th>
       <th><%= Visit.human_attribute_name(:stature) %></th>
       <th><%= Visit.human_attribute_name(:pulse) %></th>
     </tr>
     <tr>
-      <td><%= visit.weight %></td>
+      <td colspan="2"><%= visit.weight %></td>
       <td><%= visit.stature %></td>
       <td><%= visit.pulse %></td>
     </tr>
     <tr>
-      <th><%= Visit.human_attribute_name(:temperature) %></th>
+      <th colspan="2"><%= Visit.human_attribute_name(:temperature) %></th>
       <th><%= Visit.human_attribute_name(:incubator_temperature) %></th>
       <th><%= Visit.human_attribute_name(:heart_rate) %></th>
     </tr>
     <tr>
-      <td><%= visit.temperature %></td>
+      <td colspan="2"><%= visit.temperature %></td>
       <td><%= visit.incubator_temperature %></td>
       <td><%= visit.heart_rate %></td>
     </tr>
     <tr>
-      <th><%= Visit.human_attribute_name(:respiratory_rate) %></th>
+      <th colspan="2"><%= Visit.human_attribute_name(:respiratory_rate) %></th>
       <th><%= Visit.human_attribute_name(:blood_pressure_max) %></th>
       <th><%= Visit.human_attribute_name(:blood_pressure_min) %></th>
     </tr>
     <tr>
-      <td><%= visit.respiratory_rate %></td>
+      <td colspan="2"><%= visit.respiratory_rate %></td>
       <td><%= visit.blood_pressure_min %></td>
       <td><%= visit.blood_pressure_max %></td>
     </tr>

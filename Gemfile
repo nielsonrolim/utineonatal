@@ -52,3 +52,5 @@ gem 'will_paginate'
 
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+
+gem 'chronic_duration'

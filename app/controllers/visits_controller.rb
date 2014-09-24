@@ -22,6 +22,8 @@ class VisitsController < ApplicationController
     @visit.weight = @first_visit.weight if @visit.weight.nil?
     @visit.stature = @first_visit.stature if @visit.stature.nil?
 
+    @visit_time_string = ChronicDuration.output(@visit.visit_time, :format => :short) unless @visit.visit_time.nil?
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -33,6 +35,7 @@ class VisitsController < ApplicationController
 
   def new
     clear_visit
+    session[:visit_time_start] = Time.now
     redirect_to physical_examination_path(params[:bed_id])
   end
 
@@ -114,6 +117,7 @@ class VisitsController < ApplicationController
         @visit.datahora = Time.now
         @visit.hospitalization_id = @hospitalization.id
         @visit.user_id = current_user.id
+        @visit.visit_time = (Time.now - Time.parse(session[:visit_time_start])).to_i
         @visit.save
 
         @indicators = session[:indicators]
@@ -155,6 +159,7 @@ class VisitsController < ApplicationController
     session[:indicators] = nil
     session[:indicators_obs] = nil
     session[:diagnoses] = nil
+    session[:visit_time_start] = nil
   end
 
   def set_current_hospitalization
